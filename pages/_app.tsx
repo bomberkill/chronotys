@@ -4,6 +4,8 @@ import Head from 'next/head';
 import { MantineProvider } from '@mantine/core';
 import { appWithTranslation } from 'next-i18next';
 import { theme } from '../theme';
+import Header from '@/components/Header/header';
+import Footer from '@/components/footer/Footer';
 
  function App({ Component, pageProps }: AppProps) {
   return (
@@ -16,7 +18,9 @@ import { theme } from '../theme';
         />
         <link rel="shortcut icon" href="/favicon.svg" />
       </Head>
+      <Header />
       <Component {...pageProps} />
+      <Footer />
     </MantineProvider>
   );
 }

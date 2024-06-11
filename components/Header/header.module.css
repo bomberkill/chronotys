@@ -1,0 +1,10 @@
+.usefullLink {
+  text-decoration: none;
+  padding: 5px;
+  color: black;
+  border-radius: 5px;
+  &:hover {
+    background-color: rgb(247, 243, 243);
+    color: #1D70BE ;
+  }
+}
