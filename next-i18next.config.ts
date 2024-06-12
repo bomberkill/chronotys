@@ -5,4 +5,4 @@ module.exports = {
     locales: ['en', 'fr'],
     localeDetection: false,
   },
-}
+};
