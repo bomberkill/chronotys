@@ -11,8 +11,9 @@ import logo from '../../public/images/chronotys logo.png';
 import { theme } from '@/theme';
 import classes from './header.module.css';
 
-const Header = () => {
+const Header = (props: { fixed?: boolean; position?: boolean; color?: boolean }) => {
   const [opened, { toggle, close }] = useDisclosure(false);
+  const [scrolled, setScrolled] = useState(false);
   // const [active, setActive] = useState(links[0].link);
   const { t, i18n } = useTranslation('common');
   const links = [
@@ -44,59 +45,65 @@ const Header = () => {
     i18n.language === 'fr' ? setIsFrench(true) : setIsFrench(false);
   }, [i18n.language]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <Box style={{ position: 'fixed', zIndex: 100000 }}>
-      <style jsx>
-        {`
-          .link {
-            textDecoration: 'none';
-          }
-          .link:hover {
-            color: '#1D70BE';
-          }
-        `}
-      </style>
-      <header style={{ boxShadow: '2px 2px 2px 0 rgba(0, 0, 0, 0.3)', height: '15vh', backgroundColor: 'white', width: '100%', position: 'fixed', top: 0 }}>
+    <Box pos={scrolled || props.position ? 'fixed' : 'relative'} style={{ zIndex: 100 }}>
+      <header style={{ boxShadow: scrolled ? '2px 2px 2px 0 rgba(0, 0, 0, 0.3)' : '', height: '15vh', backgroundColor: !props.color && !scrolled ? 'transparent' : 'white', width: '100%', position: 'fixed', top: 0 }}>
         <Container py="1%" h="15vh" size="90%" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Box py={theme.spacing?.sm} mr={theme.spacing?.xl} w={150} style={{ position: 'relative', height: '100%' }}>
-            <NextImage layout="fill" objectFit="contain" objectPosition="center" src={logo} alt="logo" />
-          </Box>
+          <Link href="/">
+            <NextImage style={{ objectFit: 'contain', height: 75, width: 300 }} src={logo} alt="logo" />
+          </Link>
           <Group align="center" justify="flex-end">
             {isSmallScreen && (
             <Group>
               <Text
                 style={{ cursor: 'pointer', color: 'black' }}
-                fz={16}
+                fz="sm"
                 fw={600}
                 ff={theme.fontFamily}
                 onClick={() => changeLang('fr')}
-                c={isfrench ? theme.colors?.blue?.[0] : 'black'}
+                c={isfrench ? theme.colors?.orange?.[0] : !props.color && !scrolled ? 'white' : 'black'}
               >
                 FR
               </Text>
               <Text
                 style={{ cursor: 'pointer' }}
-                fz={16}
+                fz="sm"
                 fw={600}
                 ff={theme.fontFamily}
-                c="black"
+                c={!props.color && !scrolled ? 'white' : 'black'}
               >
                 |
               </Text>
               <Text
                 style={{ cursor: 'pointer' }}
-                fz={16}
+                fz="sm"
                 fw={600}
                 ff={theme.fontFamily}
                 onClick={() => changeLang('en')}
-                c={isfrench ? 'black' : theme.colors?.blue?.[0]}
+                c={isfrench ? !props.color && !scrolled ? 'white' : 'black' : theme.colors?.orange?.[0]}
               >
                 EN
               </Text>
             </Group>
             )}
             <Box onClick={toggle} w={50} h={50} style={{ borderRadius: 25, backgroundColor: theme.colors?.blue?.[1], display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}>
-              <Burger opened={opened} onClick={toggle} hidden={false} size="sm" />
+              <Burger color={theme.colors?.blue?.[9]} opened={opened} onClick={toggle} hidden={false} size="sm" />
             </Box>
           </Group>
         </Container>
@@ -108,7 +115,7 @@ const Header = () => {
             <Group>
               <Text
                 style={{ cursor: 'pointer', color: 'black' }}
-                fz={16}
+                fz="sm"
                 fw={600}
                 ff={theme.fontFamily}
                 onClick={() => changeLang('fr')}
@@ -118,7 +125,7 @@ const Header = () => {
               </Text>
               <Text
                 style={{ cursor: 'pointer' }}
-                fz={16}
+                fz="sm"
                 fw={600}
                 ff={theme.fontFamily}
                 c="black"
@@ -127,7 +134,7 @@ const Header = () => {
               </Text>
               <Text
                 style={{ cursor: 'pointer' }}
-                fz={16}
+                fz="sm"
                 fw={600}
                 ff={theme.fontFamily}
                 onClick={() => changeLang('en')}

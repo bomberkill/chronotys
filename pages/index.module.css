@@ -5,6 +5,5 @@
   overflow: hidden;
   height: 100vh;
   max-width: 100%;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.82) 25%, rgba(0, 0, 0, 0.82)),
-    url('../public/images/chronotys-image.jpeg');
+  background-image: url('../public/images/backgroung.jpg');
 }

@@ -85,10 +85,10 @@ export const theme = createTheme({
     md: rem(16),
     lg: rem(24),
   },
-  fontFamily: 'DM Sans, sans-serif',
+  fontFamily: 'Roboto,sans-serif',
 
   headings: {
-    fontFamily: 'DM Sans, sans-serif',
+    fontFamily: 'Roboto,sans-serif',
     fontWeight: '400',
     sizes: {
       h1: {

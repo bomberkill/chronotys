@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { Box, Container, Grid, GridCol, Group, Stack, Text } from '@mantine/core';
+import { AspectRatio, Box, Center, Container, Grid, Group, Stack, Text } from '@mantine/core';
 import { useTranslation } from 'next-i18next';
 import NextImage from 'next/image';
 import Link from 'next/link';
@@ -84,51 +84,63 @@ const Footer = () => {
     },
   };
   return (
-    <Box w="100%" py="10vh" bg={theme.colors?.blue?.[1]}>
+    <Box w="100%" py="10vh" bg="dark.9">
       <footer>
         <Container w="90%">
           <Grid w="100%" justify="center" grow align="flex-start">
             <Grid.Col span={{ base: 12, md: 4 }}>
-              <Box style={{ position: 'relative', height: '100%' }}>
-                <NextImage layout="fill" objectFit="contain" objectPosition="center" src={data.logo.icon} alt="logo" />
-              </Box>
-              <Group align="center" w="100%">
-                {data.logo.socialMedia.map((item, index) => (
-                  <Link className={classes.socialMedia} href={item.link} key={index}>
-                    {item.icon}
-                  </Link>
-                ))}
-              </Group>
+              <Center>
+                <Box>
+                  <AspectRatio maw={300} mx="auto">
+                    <NextImage style={{ objectFit: 'contain', height: 75 }} src={data.logo.icon} alt="logo" />
+                  </AspectRatio>
+                  <Group align="center" w="100%">
+                    {data.logo.socialMedia.map((item, index) => (
+                      <Link className={classes.socialMedia} href={item.link} key={index}>
+                        {item.icon}
+                      </Link>
+                    ))}
+                  </Group>
+                </Box>
+              </Center>
             </Grid.Col>
             <Grid.Col span={{ base: 12, xs: 6, md: 4 }}>
-              <Text fz="lg" mb={theme.spacing?.md} c={theme.colors?.blue?.[9]} fw="bold">{data.usefulLinks.title}</Text>
-              <Stack>
-                {data.usefulLinks.links.map((item, index) => (
-                  <Link
-                    className={classes.usefullLink}
-                    href={item.link}
-                    key={index}
-                  >
-                    <Text fw="bolder">{item.label}</Text>
-                  </Link>
-                ))}
-              </Stack>
+              <Center>
+                <Box>
+                  <Text fz="md" mb={theme.spacing?.md} c={theme.colors?.blue?.[9]} fw="bold">{data.usefulLinks.title}</Text>
+                  <Stack>
+                    {data.usefulLinks.links.map((item, index) => (
+                      <Link
+                        className={classes.usefullLink}
+                        href={item.link}
+                        key={index}
+                      >
+                        <Text fw="bolder" fz="sm">{item.label}</Text>
+                      </Link>
+                    ))}
+                  </Stack>
+                </Box>
+              </Center>
             </Grid.Col>
             <Grid.Col span={{ base: 12, xs: 6, md: 4 }}>
-              <Text fz="lg" mb={theme.spacing?.md} c={theme.colors?.blue?.[9]} fw="bold">{data.contact.title}</Text>
-              <Stack>
-                {data.contact.contactLinks.map((item, index) => (
-                  <Link className={classes.usefullLink} href={item.link} key={index}>
-                    <Group>
-                      {item.icon}
-                      <Text ml={-10} fw="bolder">{item.text}</Text>
-                    </Group>
-                  </Link>
-                ))}
-              </Stack>
+              <Center>
+                <Box>
+                  <Text fz="md" mb={theme.spacing?.md} c={theme.colors?.blue?.[9]} fw="bold">{data.contact.title}</Text>
+                  <Stack>
+                    {data.contact.contactLinks.map((item, index) => (
+                      <Link className={classes.usefullLink} href={item.link} key={index}>
+                        <Group>
+                          {item.icon}
+                          <Text ml={-10} fz="sm" fw="bolder">{item.text}</Text>
+                        </Group>
+                      </Link>
+                    ))}
+                  </Stack>
+                </Box>
+              </Center>
             </Grid.Col>
           </Grid>
-          <Text fw="bolder" c={theme.colors?.blue?.[9]} pt={theme.spacing?.xl} ta="center">{data.copyright}</Text>
+          <Text fz="md" fw="bolder" c={theme.colors?.blue?.[9]} pt={theme.spacing?.xl} ta="center">{data.copyright}</Text>
         </Container>
       </footer>
     </Box>
