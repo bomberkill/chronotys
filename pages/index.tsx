@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetStaticPropsContext } from 'next';
-import { Box, Button, Flex, Title, Text, Group, Container, Stack, Paper, Grid, GridCol, Badge, Center } from '@mantine/core';
+import { Box, Button, Title, Text, Group, Container, Stack, Paper, Grid, GridCol, Badge, Center } from '@mantine/core';
 import Link from 'next/link';
 import NextImage from 'next/image';
 import { useTranslation } from 'next-i18next';
