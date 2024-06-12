@@ -22,11 +22,7 @@ const Header = (props: { fixed?: boolean; position?: boolean; color?: boolean })
     { link: '/process', label: t('header-links.how-work') },
   ];
   const items = links.map((link) => (
-    <Link
-      key={link.label}
-      href={link.link}
-      className={classes.usefullLink}
-    >
+    <Link key={link.label} href={link.link} className={classes.usefullLink}>
       <Text fw="bold" py={rem(12)} px={rem(8)}>
         {link.label}
       </Text>
@@ -63,52 +59,107 @@ const Header = (props: { fixed?: boolean; position?: boolean; color?: boolean })
 
   return (
     <Box pos={scrolled || props.position ? 'fixed' : 'relative'} style={{ zIndex: 100 }}>
-      <header style={{ boxShadow: scrolled ? '2px 2px 2px 0 rgba(0, 0, 0, 0.3)' : '', height: '15vh', backgroundColor: !props.color && !scrolled ? 'transparent' : 'white', width: '100%', position: 'fixed', top: 0 }}>
-        <Container py="1%" h="15vh" size="90%" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <header
+        style={{
+          boxShadow: scrolled ? '2px 2px 2px 0 rgba(0, 0, 0, 0.3)' : '',
+          height: '15vh',
+          backgroundColor: !props.color && !scrolled ? 'transparent' : 'white',
+          width: '100%',
+          position: 'fixed',
+          top: 0,
+        }}
+      >
+        <Container
+          py="1%"
+          h="15vh"
+          size="90%"
+          style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+        >
           <Link href="/">
-            <NextImage style={{ objectFit: 'contain', height: 75, width: 300 }} src={logo} alt="logo" />
+            <NextImage
+              style={{ objectFit: 'contain', height: 75, width: 300 }}
+              src={logo}
+              alt="logo"
+            />
           </Link>
           <Group align="center" justify="flex-end">
             {isSmallScreen && (
-            <Group>
-              <Text
-                style={{ cursor: 'pointer', color: 'black' }}
-                fz="sm"
-                fw={600}
-                ff={theme.fontFamily}
-                onClick={() => changeLang('fr')}
-                c={isfrench ? theme.colors?.orange?.[0] : !props.color && !scrolled ? 'white' : 'black'}
-              >
-                FR
-              </Text>
-              <Text
-                style={{ cursor: 'pointer' }}
-                fz="sm"
-                fw={600}
-                ff={theme.fontFamily}
-                c={!props.color && !scrolled ? 'white' : 'black'}
-              >
-                |
-              </Text>
-              <Text
-                style={{ cursor: 'pointer' }}
-                fz="sm"
-                fw={600}
-                ff={theme.fontFamily}
-                onClick={() => changeLang('en')}
-                c={isfrench ? !props.color && !scrolled ? 'white' : 'black' : theme.colors?.orange?.[0]}
-              >
-                EN
-              </Text>
-            </Group>
+              <Group>
+                <Text
+                  style={{ cursor: 'pointer', color: 'black' }}
+                  fz="sm"
+                  fw={600}
+                  ff={theme.fontFamily}
+                  onClick={() => changeLang('fr')}
+                  c={
+                    isfrench
+                      ? theme.colors?.orange?.[0]
+                      : !props.color && !scrolled
+                        ? 'white'
+                        : 'black'
+                  }
+                >
+                  FR
+                </Text>
+                <Text
+                  style={{ cursor: 'pointer' }}
+                  fz="sm"
+                  fw={600}
+                  ff={theme.fontFamily}
+                  c={!props.color && !scrolled ? 'white' : 'black'}
+                >
+                  |
+                </Text>
+                <Text
+                  style={{ cursor: 'pointer' }}
+                  fz="sm"
+                  fw={600}
+                  ff={theme.fontFamily}
+                  onClick={() => changeLang('en')}
+                  c={
+                    isfrench
+                      ? !props.color && !scrolled
+                        ? 'white'
+                        : 'black'
+                      : theme.colors?.orange?.[0]
+                  }
+                >
+                  EN
+                </Text>
+              </Group>
             )}
-            <Box onClick={toggle} w={50} h={50} style={{ borderRadius: 25, backgroundColor: theme.colors?.blue?.[1], display: 'flex', justifyContent: 'center', alignItems: 'center', cursor: 'pointer' }}>
-              <Burger color={theme.colors?.blue?.[9]} opened={opened} onClick={toggle} hidden={false} size="sm" />
+            <Box
+              onClick={toggle}
+              w={50}
+              h={50}
+              style={{
+                borderRadius: 25,
+                backgroundColor: theme.colors?.blue?.[1],
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                cursor: 'pointer',
+              }}
+            >
+              <Burger
+                color={theme.colors?.blue?.[9]}
+                opened={opened}
+                onClick={toggle}
+                hidden={false}
+                size="sm"
+              />
             </Box>
           </Group>
         </Container>
       </header>
-      <Drawer c={theme.colors?.blue?.[8]} position="right" overlayProps={{ backgroundOpacity: 0.5, blur: 4 }} size={300} opened={opened} onClose={close}>
+      <Drawer
+        c={theme.colors?.blue?.[8]}
+        position="right"
+        overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
+        size={300}
+        opened={opened}
+        onClose={close}
+      >
         <Stack gap={5} align="center" justify="center">
           {items}
           {!isSmallScreen && (
@@ -123,13 +174,7 @@ const Header = (props: { fixed?: boolean; position?: boolean; color?: boolean })
               >
                 FR
               </Text>
-              <Text
-                style={{ cursor: 'pointer' }}
-                fz="sm"
-                fw={600}
-                ff={theme.fontFamily}
-                c="black"
-              >
+              <Text style={{ cursor: 'pointer' }} fz="sm" fw={600} ff={theme.fontFamily} c="black">
                 |
               </Text>
               <Text

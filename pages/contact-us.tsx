@@ -1,4 +1,2 @@
-const ContactUs = () => {
-
-};
+const ContactUs = () => {};
 export default ContactUs;

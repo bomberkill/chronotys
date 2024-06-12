@@ -7,7 +7,7 @@ import { theme } from '../theme';
 import Header from '@/components/Header/header';
 import Footer from '@/components/footer/Footer';
 
- function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return (
     <MantineProvider theme={theme}>
       <Head>

@@ -1,4 +1,2 @@
-const Services = () => {
-
-};
+const Services = () => {};
 export default Services;

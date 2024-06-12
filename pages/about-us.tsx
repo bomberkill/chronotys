@@ -1,4 +1,2 @@
-const AboutUS = () => {
-
-};
+const AboutUS = () => {};
 export default AboutUS;
