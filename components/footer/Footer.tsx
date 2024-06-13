@@ -61,19 +61,19 @@ const Footer = () => {
   };
   return (
     <Box w="100%" py="10vh" bg="dark.9">
-      <footer>
-        <Container w="90%">
+      <Center>
+
+      <footer style={{ width: '90%' }}>
           <Grid w="100%" justify="center" grow align="flex-start">
             <Grid.Col span={{ base: 12, md: 4 }}>
-              <Center>
                 <Box>
-                  <AspectRatio maw={300} mx="auto">
-                    <NextImage
-                      style={{ objectFit: 'contain', height: 75 }}
-                      src={data.logo.icon}
-                      alt="logo"
-                    />
-                  </AspectRatio>
+                  <NextImage
+                    style={{ objectFit: 'contain', height: 75, width: 150 }}
+                    src={data.logo.icon}
+                    alt="logo"
+                  />
+                  {/* <AspectRatio w={150} mx="auto">
+                  </AspectRatio> */}
                   <Group align="center" w="100%">
                     {data.logo.socialMedia.map((item, index) => (
                       <Link className={classes.socialMedia} href={item.link} key={index}>
@@ -82,6 +82,7 @@ const Footer = () => {
                     ))}
                   </Group>
                 </Box>
+              <Center>
               </Center>
             </Grid.Col>
             <Grid.Col span={{ base: 12, xs: 6, md: 4 }}>
@@ -93,7 +94,7 @@ const Footer = () => {
                   <Stack>
                     {data.usefulLinks.links.map((item, index) => (
                       <Link className={classes.usefullLink} href={item.link} key={index}>
-                        <Text fw="bolder" fz="sm">
+                        <Text fz="sm">
                           {item.label}
                         </Text>
                       </Link>
@@ -113,7 +114,7 @@ const Footer = () => {
                       <Link className={classes.usefullLink} href={item.link} key={index}>
                         <Group>
                           {item.icon}
-                          <Text ml={-10} fz="sm" fw="bolder">
+                          <Text ml={-10} fz="sm">
                             {item.text}
                           </Text>
                         </Group>
@@ -124,11 +125,13 @@ const Footer = () => {
               </Center>
             </Grid.Col>
           </Grid>
-          <Text fz="md" fw="bolder" c={theme.colors?.blue?.[9]} pt={theme.spacing?.xl} ta="center">
+          <Text fz="md" c={theme.colors?.blue?.[9]} pt={theme.spacing?.xl} ta="center">
             {data.copyright}
           </Text>
+        <Container w="90%">
         </Container>
       </footer>
+      </Center>
     </Box>
   );
 };

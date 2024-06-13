@@ -7,3 +7,16 @@
   max-width: 100%;
   background-image: url('../public/images/backgroung.jpg');
 }
+
+.badge {
+  color: #F29200;
+  background: white;
+}
+.badge:hover.paper {
+  box-shadow: 0 0 10px 1px #F29200;
+}
+
+.paper:hover {
+  /* border-color: #F29200; */
+  box-shadow: 0 0 10px 1px #F29200;
+}

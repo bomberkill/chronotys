@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 /* eslint-disable max-len */
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { GetStaticPropsContext } from 'next';
@@ -29,7 +30,7 @@ import mtn from '../public/images/partner2.png';
 import yango from '../public/images/partner3.png';
 import ecobank from '../public/images/partner4.png';
 import chronomap from '../public/images/chronotys-map.jpeg';
-import map from '../public/images/map.jpg';
+// import map from '../public/images/map.jpg';
 import Header from '@/components/Header/header';
 
 export default function HomePage() {
@@ -99,6 +100,8 @@ export default function HomePage() {
     },
   ];
   const ourpartner = [ecobank, mtn, orange, yango, ecobank, mtn];
+  // const locations = ['37.7749,-122.4194', '34.0522,-118.2437', '40.7128,-74.0060', '51.5074,-0.1278', '51.5074,-0.1278'];
+  const locations = ['https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=Google, NOBISOFT SARL, 237 Bessengue, Douala, CM&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed', 'https://www.google.com/maps?q=34.0522,-118.2437', 'https://www.google.com/maps?q=40.7128,-74.0060', 'https://www.google.com/maps?q=51.5074,-0.1278', 'https://www.google.com/maps?q=51.5074,-0.1278'];
   return (
     <>
       <Header color={false} />
@@ -154,13 +157,13 @@ export default function HomePage() {
               </Title>
               <Group mt={theme.spacing?.lg} justify="start" gap={15}>
                 <Link legacyBehavior passHref href="/contact-us">
-                  <Button color={theme.colors?.orange?.[0]} h="50px">
-                    {t('button-header')}
+                  <Button w="190px" color={theme.colors?.orange?.[0]} h="50px">
+                    {t('partner')}
                   </Button>
                 </Link>
                 <Link legacyBehavior passHref href="/contact-us">
-                  <Button color={theme.colors?.orange?.[0]} h="50px">
-                    {t('button-header')}
+                  <Button w="190px" color={theme.colors?.orange?.[0]} h="50px">
+                    {t('order')}
                   </Button>
                 </Link>
               </Group>
@@ -223,7 +226,7 @@ export default function HomePage() {
               Suspendisse aliquet varius nunc atcibus lacus sit amet coed portaeri sque mami luctus
               viveed
             </Text>
-            <Grid w="100%" my={theme.spacing?.xl} justify="center" align="center">
+            <Grid w="100%" gutter="lg" my={theme.spacing?.xl} justify="center" align="center">
               {processStep.map((item, index) => (
                 <GridCol pb={theme.spacing?.xl} key={index} span={{ base: 12, xs: 6, md: 4 }}>
                   <Box style={{ display: 'flex', justifyContent: 'center' }}>
@@ -234,28 +237,34 @@ export default function HomePage() {
                       mt={-25}
                       pos="absolute"
                       variant="outline"
-                      bg="white.0"
+                      // bg="white.0"
                       fw="bold"
                       fz="md"
                       circle
+                      className={classes.badge}
                     >
                       {index + 1}
                     </Badge>
                   </Box>
+                  <Center>
                   <Paper
+                    className={classes.paper}
                     withBorder
                     pt={theme.spacing?.xl}
                     shadow="sm"
                     p={theme.spacing?.md}
-                    h="auto"
+                    h={200}
                   >
-                    <Text fz="md" fw="bold" pb={theme.spacing?.md} ta="center">
-                      {item.title}
-                    </Text>
-                    <Text fz="sm" ta="center">
-                      {item.text}
-                    </Text>
+                      <Box w="100%">
+                        <Text fz="md" fw="bold" pb={theme.spacing?.md} ta="center">
+                          {item.title}
+                        </Text>
+                        <Text fz="sm" ta="center">
+                          {item.text}
+                        </Text>
+                      </Box>
                   </Paper>
+                  </Center>
                 </GridCol>
               ))}
             </Grid>
@@ -283,13 +292,13 @@ export default function HomePage() {
         </Text>
         <Group mt={theme.spacing?.xl} justify="center" gap="xl">
           <Link legacyBehavior passHref href="/contact-us">
-            <Button color={theme.colors?.orange?.[0]} h="50px">
-              {t('button-header')}
+            <Button w="190px" color={theme.colors?.orange?.[0]} h="50px">
+              {t('partner')}
             </Button>
           </Link>
           <Link legacyBehavior passHref href="/contact-us">
-            <Button color={theme.colors?.orange?.[0]} h="50px">
-              {t('button-header')}
+            <Button w="190px" color={theme.colors?.orange?.[0]} h="50px">
+              {t('order')}
             </Button>
           </Link>
         </Group>
@@ -300,8 +309,13 @@ export default function HomePage() {
             <NextImage style={{ width: '100%', height: '100%' }} alt="" src={chronomap} />
           </GridCol>
           <GridCol span={{ base: 12, sm: 6 }}>
-            <Group></Group>
-            <Box w="100%" h="100%">
+            <Stack gap="xs">
+              {locations.map((item, index) => (
+                <iframe loading="lazy" allowFullScreen height="100%" width="100%" style={{ border: 'none', objectFit: 'contain' }} key={index} src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=Google, NOBISOFT SARL, 237 Bessengue, Douala, CM&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" />
+              ))}
+            </Stack>
+          </GridCol>
+            {/* <Box w="100%" h="100%">
               <NextImage src={map} useMap="#image-map" alt="Segmented Map" />
               <map name="image-map">
                 <area
@@ -337,8 +351,7 @@ export default function HomePage() {
                   shape="rect"
                 />
               </map>
-            </Box>
-          </GridCol>
+            </Box> */}
         </Grid>
       </Container>
     </>

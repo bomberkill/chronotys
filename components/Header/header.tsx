@@ -19,11 +19,12 @@ const Header = (props: { fixed?: boolean; position?: boolean; color?: boolean })
   const links = [
     { link: '/about-us', label: t('header-links.about-us') },
     { link: '/services', label: t('header-links.services') },
-    { link: '/process', label: t('header-links.how-work') },
+    { link: '/how-it-works', label: t('header-links.how-work') },
+    { link: '/contact-us', label: t('header-links.contact-us') },
   ];
   const items = links.map((link) => (
     <Link key={link.label} href={link.link} className={classes.usefullLink}>
-      <Text fw="bold" py={rem(12)} px={rem(8)}>
+      <Text ta="center" py={rem(5)} px={rem(8)}>
         {link.label}
       </Text>
     </Link>
@@ -77,7 +78,7 @@ const Header = (props: { fixed?: boolean; position?: boolean; color?: boolean })
         >
           <Link href="/">
             <NextImage
-              style={{ objectFit: 'contain', height: 75, width: 300 }}
+              style={{ objectFit: 'contain', height: 75, width: 150 }}
               src={logo}
               alt="logo"
             />
@@ -160,7 +161,7 @@ const Header = (props: { fixed?: boolean; position?: boolean; color?: boolean })
         opened={opened}
         onClose={close}
       >
-        <Stack gap={5} align="center" justify="center">
+        <Stack w="100%" gap={5} align="center" justify="center">
           {items}
           {!isSmallScreen && (
             <Group>

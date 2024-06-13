@@ -1,20 +1,22 @@
 {
+  "partner": "Devenir partenaire",
+  "order": "Passer une commande",
   "title1": "Faites vos ventes",
   "title2": "sur les reseaux sociaux et",
-  "name": "chronotys",
+  "name": "CHRONOTYS",
   "title3": "assure la livraison",
   "process": {
-    "title1": "Finalise tes ventes",
-    "description1": "Finalise tes ventes avec tes clients (Facebook, WhatsApp, Instagram, etc.)",
-    "title2": "Prépare tes commandes",
-    "description2": "Prépare tes commandes (emballage, étiquettes, etc.)",
-    "title3": "Remplis le formulaire de demande de livraison",
-    "description3": "Remplis le formulaire de demande de livraison chronotys",
+    "title1": "Finaliser vos ventes",
+    "description1": "Finalisez vos ventes avec vos clients (Facebook, WhatsApp, Instagram, etc.)",
+    "title2": "Préparer vos commandes",
+    "description2": "Préparez vos commandes (emballage, étiquettes, etc.)",
+    "title3": "Remplir le formulaire de demande de livraison",
+    "description3": "Remplissez le formulaire de demande de livraison CHRONOTYS",
     "title4": "Notification au client",
-    "description4": "Ton client reçoit une notification SMS de sa commande",
-    "title5": "Ramassage et livraison",
-    "description5": "Le livreur chronotys passe à ta boutique, récupère le colis et effectue la livraison",
+    "description4": "Votre client reçoit une notification SMS de sa commande",
+    "title5": "reception et livraison",
+    "description5": "Le livreur de CHRONOTYS se rend dans votre boutique, récupère le colis et effectue la livraison",
     "title6": "Rapport de fin de journée",
-    "description6": "En fin de journée, tu reçois un rapport de tes livraisons et ton cash collecté"
+    "description6": "En fin de journée, vous recevez un rapport de vos livraisons"
   }
 }

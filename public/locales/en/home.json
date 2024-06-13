@@ -1,7 +1,9 @@
 {
+  "partner": "Be a partner",
+  "order": "Make an order",
   "title1": "Make your sales",
   "title2": "on social media and",
-  "name": "chronotys",
+  "name": "CHRONOTYS",
   "title3": "ensures delivery",
   "process": {
     "title1": "Finalize Sales",
@@ -15,6 +17,6 @@
     "title5": "Pickup and Delivery",
     "description5": "The delivery person chronotys picks up the package from your store and delivers it",
     "title6": "End of Day Report",
-    "description6": "At the end of the day, you receive a report of your deliveries and collected cash"
+    "description6": "At the end of the day, you receive a report of your deliveries"
   }
 }
