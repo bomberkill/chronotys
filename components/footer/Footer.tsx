@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { AspectRatio, Box, Center, Container, Grid, Group, Stack, Text } from '@mantine/core';
+import { Box, Center, Container, Grid, Group, Stack, Text } from '@mantine/core';
 import { useTranslation } from 'next-i18next';
 import NextImage from 'next/image';
 import Link from 'next/link';
