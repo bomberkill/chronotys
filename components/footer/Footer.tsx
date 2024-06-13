@@ -62,28 +62,26 @@ const Footer = () => {
   return (
     <Box w="100%" py="10vh" bg="dark.9">
       <Center>
-
-      <footer style={{ width: '90%' }}>
+        <footer style={{ width: '90%' }}>
           <Grid w="100%" justify="center" grow align="flex-start">
             <Grid.Col span={{ base: 12, md: 4 }}>
-                <Box>
-                  <NextImage
-                    style={{ objectFit: 'contain', height: 75, width: 150 }}
-                    src={data.logo.icon}
-                    alt="logo"
-                  />
-                  {/* <AspectRatio w={150} mx="auto">
+              <Box>
+                <NextImage
+                  style={{ objectFit: 'contain', height: 75, width: 150 }}
+                  src={data.logo.icon}
+                  alt="logo"
+                />
+                {/* <AspectRatio w={150} mx="auto">
                   </AspectRatio> */}
-                  <Group align="center" w="100%">
-                    {data.logo.socialMedia.map((item, index) => (
-                      <Link className={classes.socialMedia} href={item.link} key={index}>
-                        {item.icon}
-                      </Link>
-                    ))}
-                  </Group>
-                </Box>
-              <Center>
-              </Center>
+                <Group align="center" w="100%">
+                  {data.logo.socialMedia.map((item, index) => (
+                    <Link className={classes.socialMedia} href={item.link} key={index}>
+                      {item.icon}
+                    </Link>
+                  ))}
+                </Group>
+              </Box>
+              <Center></Center>
             </Grid.Col>
             <Grid.Col span={{ base: 12, xs: 6, md: 4 }}>
               <Center>
@@ -94,9 +92,7 @@ const Footer = () => {
                   <Stack>
                     {data.usefulLinks.links.map((item, index) => (
                       <Link className={classes.usefullLink} href={item.link} key={index}>
-                        <Text fz="sm">
-                          {item.label}
-                        </Text>
+                        <Text fz="sm">{item.label}</Text>
                       </Link>
                     ))}
                   </Stack>
@@ -128,9 +124,8 @@ const Footer = () => {
           <Text fz="md" c={theme.colors?.blue?.[9]} pt={theme.spacing?.xl} ta="center">
             {data.copyright}
           </Text>
-        <Container w="90%">
-        </Container>
-      </footer>
+          <Container w="90%"></Container>
+        </footer>
       </Center>
     </Box>
   );

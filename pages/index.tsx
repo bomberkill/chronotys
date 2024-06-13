@@ -101,7 +101,13 @@ export default function HomePage() {
   ];
   const ourpartner = [ecobank, mtn, orange, yango, ecobank, mtn];
   // const locations = ['37.7749,-122.4194', '34.0522,-118.2437', '40.7128,-74.0060', '51.5074,-0.1278', '51.5074,-0.1278'];
-  const locations = ['https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=Google, NOBISOFT SARL, 237 Bessengue, Douala, CM&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed', 'https://www.google.com/maps?q=34.0522,-118.2437', 'https://www.google.com/maps?q=40.7128,-74.0060', 'https://www.google.com/maps?q=51.5074,-0.1278', 'https://www.google.com/maps?q=51.5074,-0.1278'];
+  const locations = [
+    'https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=Google, NOBISOFT SARL, 237 Bessengue, Douala, CM&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed',
+    'https://www.google.com/maps?q=34.0522,-118.2437',
+    'https://www.google.com/maps?q=40.7128,-74.0060',
+    'https://www.google.com/maps?q=51.5074,-0.1278',
+    'https://www.google.com/maps?q=51.5074,-0.1278',
+  ];
   return (
     <>
       <Header color={false} />
@@ -247,14 +253,14 @@ export default function HomePage() {
                     </Badge>
                   </Box>
                   <Center>
-                  <Paper
-                    className={classes.paper}
-                    withBorder
-                    pt={theme.spacing?.xl}
-                    shadow="sm"
-                    p={theme.spacing?.md}
-                    h={200}
-                  >
+                    <Paper
+                      className={classes.paper}
+                      withBorder
+                      pt={theme.spacing?.xl}
+                      shadow="sm"
+                      p={theme.spacing?.md}
+                      h={200}
+                    >
                       <Box w="100%">
                         <Text fz="md" fw="bold" pb={theme.spacing?.md} ta="center">
                           {item.title}
@@ -263,7 +269,7 @@ export default function HomePage() {
                           {item.text}
                         </Text>
                       </Box>
-                  </Paper>
+                    </Paper>
                   </Center>
                 </GridCol>
               ))}
@@ -311,11 +317,19 @@ export default function HomePage() {
           <GridCol span={{ base: 12, sm: 6 }}>
             <Stack gap="xs">
               {locations.map((item, index) => (
-                <iframe loading="lazy" allowFullScreen height="100%" width="100%" style={{ border: 'none', objectFit: 'contain' }} key={index} src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=Google, NOBISOFT SARL, 237 Bessengue, Douala, CM&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" />
+                <iframe
+                  loading="lazy"
+                  allowFullScreen
+                  height="100%"
+                  width="100%"
+                  style={{ border: 'none', objectFit: 'contain' }}
+                  key={index}
+                  src="https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=Google, NOBISOFT SARL, 237 Bessengue, Douala, CM&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                />
               ))}
             </Stack>
           </GridCol>
-            {/* <Box w="100%" h="100%">
+          {/* <Box w="100%" h="100%">
               <NextImage src={map} useMap="#image-map" alt="Segmented Map" />
               <map name="image-map">
                 <area

@@ -12,6 +12,7 @@
   color: #F29200;
   background: white;
 }
+
 .badge:hover.paper {
   box-shadow: 0 0 10px 1px #F29200;
 }
