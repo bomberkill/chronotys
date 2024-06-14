@@ -20,3 +20,11 @@
   /* border-color: #F29200; */
   box-shadow: 0 0 10px 1px #F29200;
 }
+
+.superimposed {
+  transition: background-color 0.3s ease;
+}
+
+.superimposed:hover {
+  background-color: rgba(0, 0, 0, 0.5); /* Modifiez la couleur selon vos besoins */
+}
