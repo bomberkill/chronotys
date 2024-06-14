@@ -1,0 +1,17 @@
+{
+  "title": "Entrer en contact avec notre equipe",
+  "validation": {
+    "email": "L'adresse e-mail est requise",
+    "first-name": "Le nom est requis",
+    "message": "Le message est requis"
+  },
+  "form": {
+    "labels": {
+      "name": "Nom",
+      "email": "Email",
+      "message": "Message",
+      "message-placeholder": "Votre message",
+      "submit": "Soumettre"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Contact our team",
+  "validation": {
+    "email": "Email is required",
+    "first-name": "Name is required",
+    "message": "Message est required"
+  },
+  "form": {
+    "labels": {
+      "name": "Name",
+      "email": "Email",
+      "message": "Message",
+      "message-placeholder": "Your message",
+      "submit": "Submit"
+    }
+  }
+}

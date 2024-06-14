@@ -15,6 +15,7 @@ import {
   GridCol,
   Badge,
   Center,
+  AspectRatio,
 } from '@mantine/core';
 import Link from 'next/link';
 import NextImage from 'next/image';
@@ -29,7 +30,7 @@ import orange from '../public/images/partner1.png';
 import mtn from '../public/images/partner2.png';
 import yango from '../public/images/partner3.png';
 import ecobank from '../public/images/partner4.png';
-import chronomap from '../public/images/chronotys-map.jpeg';
+import chronomap from '../public/images/chronotys-map.png';
 // import map from '../public/images/map.jpg';
 import Header from '@/components/Header/header';
 
@@ -101,20 +102,20 @@ export default function HomePage() {
   ];
   const ourpartner = [ecobank, mtn, orange, yango, ecobank, mtn];
   // const locations = ['37.7749,-122.4194', '34.0522,-118.2437', '40.7128,-74.0060', '51.5074,-0.1278', '51.5074,-0.1278'];
-  const locations = [
-    'https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=Google, NOBISOFT SARL, 237 Bessengue, Douala, CM&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed',
-    'https://www.google.com/maps?q=34.0522,-118.2437',
-    'https://www.google.com/maps?q=40.7128,-74.0060',
-    'https://www.google.com/maps?q=51.5074,-0.1278',
-    'https://www.google.com/maps?q=51.5074,-0.1278',
-  ];
+  // const locations = [
+  //   'https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=Google, NOBISOFT SARL, 237 Bessengue, Douala, CM&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed',
+  //   'https://www.google.com/maps?q=34.0522,-118.2437',
+  //   'https://www.google.com/maps?q=40.7128,-74.0060',
+  //   'https://www.google.com/maps?q=51.5074,-0.1278',
+  //   'https://www.google.com/maps?q=51.5074,-0.1278',
+  // ];
   return (
     <>
       <Header color={false} />
       <Box
         pt="15vh"
         h={{ base: '70vh', sm: '100vh' }}
-        maw="100%"
+        w="100%"
         className={classes.banner}
         pb={theme.spacing?.lg}
       >
@@ -130,7 +131,7 @@ export default function HomePage() {
                 fz={{ base: 'lg', xs: 'xl' }}
                 fw={700}
                 // mx={{ base: 10, sm: 300 }}
-                ta={{ base: 'center', md: 'start' }}
+                ta={{ base: 'center' }}
               >
                 {t('title1')}
               </Title>
@@ -139,7 +140,7 @@ export default function HomePage() {
                 fz={{ base: 'md', xs: 'lg' }}
                 fw={400}
                 // mx={{ base: 10, sm: 300 }}
-                ta={{ base: 'center', md: 'start' }}
+                ta={{ base: 'center' }}
               >
                 {t('title2')}
               </Title>
@@ -148,7 +149,7 @@ export default function HomePage() {
                 fz={{ base: 'lg', xs: 'xl' }}
                 fw={700}
                 // mx={{ base: 10, sm: 300 }}
-                ta={{ base: 'center', md: 'start' }}
+                ta={{ base: 'center' }}
               >
                 {t('name')}
               </Title>
@@ -157,11 +158,11 @@ export default function HomePage() {
                 fz={{ base: 'md', xs: 'lg' }}
                 fw={400}
                 // mx={{ base: 10, sm: 300 }}
-                ta={{ base: 'center', md: 'start' }}
+                ta={{ base: 'center' }}
               >
                 {t('title3')}
               </Title>
-              <Group mt={theme.spacing?.lg} justify="start" gap={15}>
+              <Group mt={theme.spacing?.lg} justify="center" gap={15}>
                 <Link legacyBehavior passHref href="/contact-us">
                   <Button w="190px" color={theme.colors?.orange?.[0]} h="50px">
                     {t('partner')}
@@ -310,9 +311,19 @@ export default function HomePage() {
         </Group>
       </Box>
       <Container style={{ overflow: 'hidden' }} size="80%">
-        <Grid w="100%" my={theme.spacing?.xl} justify="center">
+        <Center>
+          <Box>
+            <AspectRatio maw={700} mah={700}>
+              <NextImage
+                style={{ objectFit: 'contain', width: '100%', height: '100%' }}
+                alt=""
+                src={chronomap}
+              />
+            </AspectRatio>
+          </Box>
+        </Center>
+        {/* <Grid w="100%" my={theme.spacing?.xl} justify="center">
           <GridCol span={{ base: 12, sm: 6 }}>
-            <NextImage style={{ width: '100%', height: '100%' }} alt="" src={chronomap} />
           </GridCol>
           <GridCol span={{ base: 12, sm: 6 }}>
             <Stack gap="xs">
@@ -329,44 +340,7 @@ export default function HomePage() {
               ))}
             </Stack>
           </GridCol>
-          {/* <Box w="100%" h="100%">
-              <NextImage src={map} useMap="#image-map" alt="Segmented Map" />
-              <map name="image-map">
-                <area
-                  target="_blank"
-                  alt="Location 1"
-                  title="Agence de Maroua"
-                  href="https://www.google.com/maps?q=37.7749,-122.4194"
-                  coords="0,0,250,250"
-                  shape="rect"
-                />
-                <area
-                  target="_blank"
-                  alt="Location 2"
-                  title="Agence de Garoua"
-                  href="https://www.google.com/maps?q=34.0522,-118.2437"
-                  coords="250,0,500,250"
-                  shape="rect"
-                />
-                <area
-                  target="_blank"
-                  alt="Location 3"
-                  title="Agence de Ngaoundéré"
-                  href="https://www.google.com/maps?q=40.7128,-74.0060"
-                  coords="0,250,250,500"
-                  shape="rect"
-                />
-                <area
-                  target="_blank"
-                  alt="Location 4"
-                  title="Agence de Douala"
-                  href="https://www.google.com/maps?q=51.5074,-0.1278"
-                  coords="250,250,500,500"
-                  shape="rect"
-                />
-              </map>
-            </Box> */}
-        </Grid>
+        </Grid> */}
       </Container>
     </>
   );
