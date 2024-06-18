@@ -1,11 +1,13 @@
 {
   "partner": "Be a partner",
-  "order": "Make an order",
+  "order": "Request a delivery",
   "title1": "Make your sales",
   "title2": "on social media and",
   "name": "CHRONOTYS",
   "title3": "ensures delivery",
   "process": {
+    "header": "Fast and Easy Application Process",
+    "desc": "Our streamlined application process guides you through efficient steps, ensuring a smooth and quick user experience without complications.",
     "title1": "Finalize Sales",
     "description1": "Finalize sales with your clients",
     "title2": "Prepare Orders",
@@ -18,5 +20,23 @@
     "description5": "The delivery person chronotys picks up the package from your store and delivers it",
     "title6": "End of Day Report",
     "description6": "At the end of the day, you receive a report of your deliveries"
-  }
+  },
+  "service": {
+    "header": "Our Services",
+    "desc": "Our company offers logistics services for individuals and merchants: fast home delivery, reliable shipping to customers, and secure storage. We simplify the management of your shipments and storage.",
+    "button": "See more",
+    "title": {
+      "title1": "Delivery for individuals",
+      "title2": "Delivery for merchants",
+      "title3": "Goods storage"
+    },
+    "text": {
+      "text1": "Fast and secure home delivery for your purchases and personal parcels.",
+      "text2": "Efficient and reliable service to ship your products to customers.",
+      "text3": "Secure and flexible solution to store your products in our facilities."
+    }
+  },
+  "contact": "Contact Us",
+  "contact-text": "Our mission is to provide you with a reliable, fast, and secure delivery service.",
+  "ourpartner": "Our Partners"
 }

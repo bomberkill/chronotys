@@ -27,15 +27,8 @@ import Autoplay from 'embla-carousel-autoplay';
 import { useMediaQuery } from '@mantine/hooks';
 import { theme } from '@/theme';
 import '@mantine/carousel/styles.css';
-// import chronotys from '../public/images/chronotys image.jpeg';
 import classes from './index.module.css';
-import delivery from '../public/images/delivery1.jpeg';
-import orange from '../public/images/partner1.png';
-import mtn from '../public/images/partner2.png';
-import yango from '../public/images/partner3.png';
-import ecobank from '../public/images/partner4.png';
 import chronomap from '../public/images/chronotys-map.png';
-// import map from '../public/images/map.jpg';
 import Header from '@/components/Header/header';
 import women from '../public/images/women1.png';
 import douala from '../public/images/douala.png';
@@ -48,10 +41,18 @@ import garoua from '../public/images/garoua.png';
 import garoua2 from '../public/images/garoua2.png';
 import maroua from '../public/images/maroua.png';
 import maroua2 from '../public/images/maroua2.png';
-// import shipping from '../public/images/free-shipping.png';
+import stockage from '../public/images/stockage.jpeg';
+import santalucia from '../public/images/santalucia.png';
+import projectioncompany from '../public/images/projectioncompany.png';
+import bao from '../public/images/bao.png';
+import nobisoft from '../public/images/nobisoft.png';
+import particulier from '../public/images/particulier.jpg';
+import marchandise from '../public/images/marchandise.png';
+import navigation from '../public/images/navigation.png';
 
 export default function HomePage() {
   const autoplay = useRef(Autoplay({ delay: 2000 }));
+  const autoplay2 = useRef(Autoplay({ delay: 2000 }));
   const [dlaHovered, setDlaHovered] = useState(false);
   const [ydeHovered, setYdeHovered] = useState(false);
   const [marHovered, setMarHovered] = useState(false);
@@ -61,40 +62,40 @@ export default function HomePage() {
   const { t } = useTranslation('home');
   const servicesSlide = [
     {
-      image: delivery,
-      title: 'B2B Delivery',
-      text: 'Join the Mobile generation with an Bee Smartphone loan. Bee offers the latest phone models that fits your budget.',
-      button: 'Read More',
+      image: particulier,
+      title: t('service.title.title1'),
+      text: t('service.text.text1'),
+      button: t('service.button'),
     },
     {
-      image: delivery,
-      title: 'B2B Delivery',
-      text: 'Join the Mobile generation with an Bee Smartphone loan. Bee offers the latest phone models that fits your budget.',
-      button: 'Read More',
+      image: marchandise,
+      title: t('service.title.title2'),
+      text: t('service.text.text2'),
+      button: t('service.button'),
     },
     {
-      image: delivery,
-      title: 'B2B Delivery',
-      text: 'Join the Mobile generation with an Bee Smartphone loan. Bee offers the latest phone models that fits your budget.',
-      button: 'Read More',
+      image: stockage,
+      title: t('service.title.title3'),
+      text: t('service.text.text3'),
+      button: t('service.button'),
     },
     {
-      image: delivery,
-      title: 'B2B Delivery',
-      text: 'Join the Mobile generation with an Bee Smartphone loan. Bee offers the latest phone models that fits your budget.',
-      button: 'Read More',
+      image: particulier,
+      title: t('service.title.title1'),
+      text: t('service.text.text1'),
+      button: t('service.button'),
     },
     {
-      image: delivery,
-      title: 'B2B Delivery',
-      text: 'Join the Mobile generation with an Bee Smartphone loan. Bee offers the latest phone models that fits your budget.',
-      button: 'Read More',
+      image: marchandise,
+      title: t('service.title.title2'),
+      text: t('service.text.text2'),
+      button: t('service.button'),
     },
     {
-      image: delivery,
-      title: 'B2B Delivery',
-      text: 'Join the Mobile generation with an Bee Smartphone loan. Bee offers the latest phone models that fits your budget.',
-      button: 'Read More',
+      image: stockage,
+      title: t('service.title.title3'),
+      text: t('service.text.text3'),
+      button: t('service.button'),
     },
   ];
   const processStep = [
@@ -123,37 +124,26 @@ export default function HomePage() {
       text: t('process.description6'),
     },
   ];
-  const ourpartner = [ecobank, mtn, orange, yango, ecobank, mtn];
-  // const locations = [
-  //   {
-  //     name: 'Douala',
-  //     place: 'https://www.google.com/maps?q=34.0522,-118.2437',
-  //   },
-  //   {
-  //     name: 'Garoua',
-  //     place: 'https://www.google.com/maps?q=34.0522,-118.2437',
-  //   },
-  //   {
-  //     name: 'Maroua',
-  //     place: 'https://www.google.com/maps?q=34.0522,-118.2437',
-  //   },
-  //   {
-  //     name: 'Yaoundé',
-  //     place: 'https://www.google.com/maps?q=34.0522,-118.2437',
-  //   },
-  //   {
-  //     name: 'Ngaoundéré',
-  //     place: 'https://www.google.com/maps?q=34.0522,-118.2437',
-  //   },
-  // ];
-  // const locations = ['37.7749,-122.4194', '34.0522,-118.2437', '40.7128,-74.0060', '51.5074,-0.1278', '51.5074,-0.1278'];
-  // const locations = [
-  //   'https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=Google, NOBISOFT SARL, 237 Bessengue, Douala, CM&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed',
-  //   'https://www.google.com/maps?q=34.0522,-118.2437',
-  //   'https://www.google.com/maps?q=40.7128,-74.0060',
-  //   'https://www.google.com/maps?q=51.5074,-0.1278',
-  //   'https://www.google.com/maps?q=51.5074,-0.1278',
-  // ];
+  const ourpartner = [
+    santalucia,
+    nobisoft,
+    projectioncompany,
+    bao,
+    santalucia,
+    nobisoft,
+    projectioncompany,
+    bao,
+  ];
+  const locations = [
+    { name: 'Douala', href: 'https://www.google.com/maps?q=51.5074,-0.1278' },
+    { name: 'Yaoundé', href: 'https://www.google.com/maps?q=40.7128,-74.0060' },
+    { name: 'Maroua', href: 'https://www.google.com/maps?q=34.0522,-118.2437' },
+    { name: 'Garoua', href: 'https://www.google.com/maps?q=51.5074,-0.1278' },
+    {
+      name: 'Ngaoundéré',
+      href: 'https://maps.google.com/maps?width=100%25&amp;height=300&amp;hl=en&amp;q=Google, NOBISOFT SARL, 237 Bessengue, Douala, CM&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed',
+    },
+  ];
   return (
     <>
       <Header color={false} />
@@ -214,12 +204,20 @@ export default function HomePage() {
                   {t('title3')}
                 </Title>
                 <Group mt={theme.spacing?.lg} justify="center" gap={15}>
-                  <Link legacyBehavior passHref href="/contact-us">
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://forms.gle/jtdiiWxLVg5RuuKy9"
+                  >
                     <Button w="190px" color={theme.colors?.orange?.[0]} h="50px">
                       {t('partner')}
                     </Button>
                   </Link>
-                  <Link legacyBehavior passHref href="/contact-us">
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://forms.gle/Gkc8fE7RemBqVfdA7"
+                  >
                     <Button w="190px" color={theme.colors?.orange?.[0]} h="50px">
                       {t('order')}
                     </Button>
@@ -240,17 +238,16 @@ export default function HomePage() {
         </Container>
       </Box>
       <Box style={{ overflow: 'hidden' }} py={theme.spacing?.xl} h="auto" w="100%" bg="dark.9">
-        <Container h="100%" size="80%">
+        <Container h="100%" size={isLargeScreen ? '80%' : '90%'}>
           <Box>
             <Text c="white.0" fw="bold" fz="lg" ta="center">
-              Our Services
+              {t('service.header')}
             </Text>
             <Text c="white.0" ta="center">
-              We will match you with a loan program that meet your financial need. In short term
-              liquidity, by striving to make funds available to them within 24 hours of application.
+              {t('service.desc')}
             </Text>
             <Carousel
-              px={rem(60)}
+              px={isLargeScreen ? rem(60) : rem(20)}
               mt={theme.spacing?.xl}
               align="start"
               slideSize={{ base: '100%', xs: '50%', lg: '33.33%' }}
@@ -258,12 +255,12 @@ export default function HomePage() {
               slidesToScroll={1}
               loop
               dragFree
-              withControls
+              withControls={!!isLargeScreen}
               controlSize={40}
               controlsOffset={-rem(150)}
-              plugins={[autoplay.current]}
-              onMouseEnter={autoplay.current.stop}
-              onMouseLeave={autoplay.current.reset}
+              plugins={[autoplay2.current]}
+              onMouseEnter={autoplay2.current.stop}
+              onMouseLeave={autoplay2.current.reset}
             >
               {servicesSlide.map((item, index) => (
                 <CarouselSlide h="auto" w="100%" key={index}>
@@ -274,8 +271,10 @@ export default function HomePage() {
                       src={item.image}
                     />
                     <Stack>
-                      <Text fw="bold">{item.title}</Text>
-                      <Text>{item.text}</Text>
+                      <Text ta="center" fw="bold">
+                        {item.title}
+                      </Text>
+                      <Text ta="center">{item.text}</Text>
                       <Link legacyBehavior passHref href="/contact-us">
                         <Button color={theme.colors?.orange?.[0]} h="50px">
                           {item.button}
@@ -293,12 +292,9 @@ export default function HomePage() {
         <Center>
           <Box w={{ base: '100%', md: '90%' }}>
             <Text fw="bold" fz="lg" ta="center">
-              Fast & Easy Application Process
+              {t('process.header')}
             </Text>
-            <Text ta="center">
-              Suspendisse aliquet varius nunc atcibus lacus sit amet coed portaeri sque mami luctus
-              viveed
-            </Text>
+            <Text ta="center">{t('process.desc')}</Text>
             <Grid w="100%" gutter="lg" my={theme.spacing?.xl} justify="center" align="center">
               {processStep.map((item, index) => (
                 <GridCol pb={theme.spacing?.xl} key={index} span={{ base: 12, xs: 6, md: 4 }}>
@@ -328,6 +324,7 @@ export default function HomePage() {
                       shadow="sm"
                       p={theme.spacing?.md}
                       h={200}
+                      w={261}
                     >
                       <Box w="100%">
                         <Text fz="md" fw="bold" pb={theme.spacing?.md} ta="center">
@@ -346,31 +343,64 @@ export default function HomePage() {
         </Center>
         <Box pt={theme.spacing?.xl} w="100%">
           <Text fw="bold" fz="lg" ta="center">
-            Our Partner
+            {t('ourpartner')}
           </Text>
-          <Group pt={theme.spacing?.lg} gap="xl" justify="center" w="100%">
-            {ourpartner.map((item, index) => (
-              <Box h={150} w={150} key={index}>
-                <NextImage style={{ height: 'auto', width: '100%' }} alt="" src={item} />
-              </Box>
-            ))}
-          </Group>
+          <Container size="80%">
+            <Carousel
+              mt={theme.spacing?.xl}
+              align="start"
+              slideSize={{ base: '100%', xs: '50%', md: '33.33%', lg: '25%' }}
+              slideGap="md"
+              slidesToScroll={1}
+              loop
+              withControls={false}
+              plugins={[autoplay.current]}
+              onMouseEnter={autoplay.current.stop}
+              onMouseLeave={autoplay.current.reset}
+            >
+              {ourpartner.map((item, index) => (
+                <CarouselSlide key={index}>
+                  <Center>
+                    <AspectRatio ratio={16 / 9}>
+                      <NextImage
+                        style={{ height: 'auto', width: '100%', objectFit: 'contain' }}
+                        alt=""
+                        src={item}
+                      />
+                    </AspectRatio>
+                    {/* <Box h={150} w={150} key={index}>
+                  </Box> */}
+                  </Center>
+                </CarouselSlide>
+              ))}
+            </Carousel>
+          </Container>
+          {/* <Group pt={theme.spacing?.lg} gap="xl" justify="center" w="100%">
+          </Group> */}
         </Box>
       </Container>
       <Box py={theme.spacing?.xl} bg={theme.colors?.blue?.[1]}>
         <Text fw="bold" fz="lg" c="white.0" ta="center">
-          News Rooms
+          {t('contact')}
         </Text>
         <Text c="white.0" ta="center">
-          Our mission is to deliver reliable, latest news and opinions.
+          {t('contact-text')}
         </Text>
         <Group mt={theme.spacing?.xl} justify="center" gap="xl">
-          <Link legacyBehavior passHref href="/contact-us">
+          <Link
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://forms.gle/jtdiiWxLVg5RuuKy9"
+          >
             <Button w="190px" color={theme.colors?.orange?.[0]} h="50px">
               {t('partner')}
             </Button>
           </Link>
-          <Link legacyBehavior passHref href="/contact-us">
+          <Link
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://forms.gle/Gkc8fE7RemBqVfdA7"
+          >
             <Button w="190px" color={theme.colors?.orange?.[0]} h="50px">
               {t('order')}
             </Button>
@@ -379,7 +409,7 @@ export default function HomePage() {
       </Box>
       <Container style={{ overflow: 'hidden' }} size="80%">
         <Center>
-          {isLargeScreen && (
+          {isLargeScreen ? (
             <Box pos="relative">
               <Link
                 target="_blank"
@@ -514,40 +544,38 @@ export default function HomePage() {
                 />
               </AspectRatio>
             </Box>
-          )}
-          {/* <Box>
-              <Text>Our coverages</Text>
-              <Text>areas</Text>
-              <Text>we serve in 05 regions in cameroon</Text>
-              <Grid align="center" justify="center">
-                {locations.map((item, index) => (
-                  <GridCol key={index} span={{ base: 12, xs: 6 }}>
-                    <Box>
-                      <Badge
-                        color={theme.colors?.orange?.[0]}
-                        h={50}
-                        w={50}
-                        mt={-25}
-                        pos="absolute"
-                        variant="outline"
-                        // bg="white.0"
-                        fw="bold"
-                        fz="md"
-                        circle
-                        className={classes.badge}
+          ) : (
+            <Box py={theme.spacing?.lg}>
+              <Center>
+                <Group pos="relative">
+                  {locations.map((item, index) => (
+                    <Link
+                      style={{ textDecoration: 'none' }}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={item.href}
+                      key={index}
+                    >
+                      <Box
+                        w={70}
+                        h={70}
+                        style={{ borderRadius: 35, position: 'absolute', borderWidth: 0.25 }}
                       >
-                        <NextImage alt="" src={shipping} />
-                      </Badge>
-                      <Paper>
-                        <Box>
-                          <Text>{item.name}</Text>
-                        </Box>
+                        <AspectRatio>
+                          <NextImage src={navigation} alt="" />
+                        </AspectRatio>
+                      </Box>
+                      <Paper shadow="sm" p={theme.spacing?.sm} radius="sm">
+                        <Text fw="bold" ta="center" c={theme.colors?.blue?.[0]}>
+                          {item.name}
+                        </Text>
                       </Paper>
-                    </Box>
-                  </GridCol>
-                ))}
-              </Grid>
-            </Box> */}
+                    </Link>
+                  ))}
+                </Group>
+              </Center>
+            </Box>
+          )}
         </Center>
       </Container>
     </>

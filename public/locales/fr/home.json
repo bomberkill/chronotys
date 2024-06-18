@@ -1,11 +1,13 @@
 {
   "partner": "Devenir partenaire",
-  "order": "Passer une commande",
+  "order": "Demander une livraison",
   "title1": "Faites vos ventes",
   "title2": "sur les reseaux sociaux et",
   "name": "CHRONOTYS",
   "title3": "assure la livraison",
   "process": {
+    "header": "Processus de demande rapide et facile",
+    "desc": "Notre processus d'application simplifié vous guide à travers des étapes efficaces, assurant une expérience utilisateur fluide et rapide, sans complications",
     "title1": "Finaliser vos ventes",
     "description1": "Finalisez vos ventes avec vos clients",
     "title2": "Préparer vos commandes",
@@ -18,5 +20,23 @@
     "description5": "Le livreur de CHRONOTYS se rend dans votre boutique, récupère le colis et effectue la livraison",
     "title6": "Rapport de fin de journée",
     "description6": "En fin de journée, vous recevez un rapport de vos livraisons"
-  }
+  },
+  "service": {
+    "header": "Nos Services",
+    "desc": "Notre entreprise offre des services logistiques pour particuliers et marchands : livraison rapide à domicile, expédition fiable aux clients, et stockage sécurisé. Nous simplifions la gestion de vos envois et de votre stockage.",
+    "button": "Voir plus",
+    "title": {
+      "title1": "Livraison pour particuliers",
+      "title2": "Livraison pour marchands",
+      "title3": "Stockage de marchandises"
+    },
+    "text": {
+      "text1": "Service rapide et sécurisé à domicile pour vos achats et colis personnels.",
+      "text2": "Service efficace et fiable pour expédier vos produits aux clients.",
+      "text3": "Solution sécurisée et flexible pour entreposer vos produits dans nos locaux."
+    }
+  },
+  "contact": "Nous Contacter",
+  "contact-text": "Notre mission est de vous offrir un service de livraison fiable, rapide et sécurisé",
+  "ourpartner": "Nos Partners"
 }
