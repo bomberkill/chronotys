@@ -25,6 +25,7 @@ import { Carousel, CarouselSlide } from '@mantine/carousel';
 import { useRef, useState } from 'react';
 import Autoplay from 'embla-carousel-autoplay';
 import { useMediaQuery } from '@mantine/hooks';
+import { IconLocationFilled } from '@tabler/icons-react';
 import { theme } from '@/theme';
 import '@mantine/carousel/styles.css';
 import classes from './index.module.css';
@@ -48,7 +49,7 @@ import bao from '../public/images/bao.png';
 import nobisoft from '../public/images/nobisoft.png';
 import particulier from '../public/images/particulier.jpg';
 import marchandise from '../public/images/marchandise.png';
-import navigation from '../public/images/navigation.png';
+// import navigation from '../public/images/navigation.png';
 
 export default function HomePage() {
   const autoplay = useRef(Autoplay({ delay: 2000 }));
@@ -170,37 +171,23 @@ export default function HomePage() {
                 <Title
                   c={theme.colors?.orange?.[0]}
                   fz={{ base: 'lg', xs: 'xl' }}
-                  fw={700}
-                  // mx={{ base: 10, sm: 300 }}
+                  fw="bold"
                   ta={{ base: 'center' }}
                 >
                   {t('title1')}
                 </Title>
-                <Title
-                  c="white"
-                  fz={{ base: 'md', xs: 'lg' }}
-                  fw={400}
-                  // mx={{ base: 10, sm: 300 }}
-                  ta={{ base: 'center' }}
-                >
+                <Title c="white" fz={{ base: 'md', xs: 'lg' }} ta={{ base: 'center' }}>
                   {t('title2')}
                 </Title>
                 <Title
                   c={theme.colors?.orange?.[0]}
                   fz={{ base: 'lg', xs: 'xl' }}
-                  fw={700}
-                  // mx={{ base: 10, sm: 300 }}
+                  fw="bold"
                   ta={{ base: 'center' }}
                 >
                   {t('name')}
                 </Title>
-                <Title
-                  c="white"
-                  fz={{ base: 'md', xs: 'lg' }}
-                  fw={400}
-                  // mx={{ base: 10, sm: 300 }}
-                  ta={{ base: 'center' }}
-                >
+                <Title c="white" fz={{ base: 'md', xs: 'lg' }} ta={{ base: 'center' }}>
                   {t('title3')}
                 </Title>
                 <Group mt={theme.spacing?.lg} justify="center" gap={15}>
@@ -263,18 +250,22 @@ export default function HomePage() {
               onMouseLeave={autoplay2.current.reset}
             >
               {servicesSlide.map((item, index) => (
-                <CarouselSlide h="auto" w="100%" key={index}>
-                  <Paper shadow="sm" p={theme.spacing?.lg} h="auto">
+                <CarouselSlide h="100%" w="100%" key={index}>
+                  <Paper shadow="sm" p={theme.spacing?.lg} h="100%">
                     <NextImage
                       style={{ width: '100%', height: '100%', borderRadius: 5 }}
                       alt="image"
                       src={item.image}
                     />
-                    <Stack>
-                      <Text ta="center" fw="bold">
-                        {item.title}
-                      </Text>
-                      <Text ta="center">{item.text}</Text>
+                    <Stack gap={10}>
+                      <Box h={135}>
+                        <Text lineClamp={2} ta="center" fw="bold">
+                          {item.title}
+                        </Text>
+                        <Text pt={theme.spacing?.sm} lineClamp={3} ta="center">
+                          {item.text}
+                        </Text>
+                      </Box>
                       <Link legacyBehavior passHref href="/contact-us">
                         <Button color={theme.colors?.orange?.[0]} h="50px">
                           {item.button}
@@ -368,15 +359,11 @@ export default function HomePage() {
                         src={item}
                       />
                     </AspectRatio>
-                    {/* <Box h={150} w={150} key={index}>
-                  </Box> */}
                   </Center>
                 </CarouselSlide>
               ))}
             </Carousel>
           </Container>
-          {/* <Group pt={theme.spacing?.lg} gap="xl" justify="center" w="100%">
-          </Group> */}
         </Box>
       </Container>
       <Box py={theme.spacing?.xl} bg={theme.colors?.blue?.[1]}>
@@ -546,31 +533,57 @@ export default function HomePage() {
             </Box>
           ) : (
             <Box py={theme.spacing?.lg}>
+              <Group gap={5} justify="center">
+                <Text fw="bold" fz="lg" c={theme.colors?.orange?.[0]}>
+                  {t('coverage')}
+                </Text>
+                <Text fw="bold" fz="lg" c={theme.colors?.blue?.[0]}>
+                  {t('area')}
+                </Text>
+              </Group>
+              <Text mb={theme.spacing?.md} ta="center">
+                {t('desc')}
+              </Text>
               <Center>
-                <Group pos="relative">
+                <Group gap="lg" justify="center">
                   {locations.map((item, index) => (
-                    <Link
-                      style={{ textDecoration: 'none' }}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={item.href}
-                      key={index}
-                    >
-                      <Box
-                        w={70}
-                        h={70}
-                        style={{ borderRadius: 35, position: 'absolute', borderWidth: 0.25 }}
+                    <Box w={130} mx={theme.spacing?.xs} pos="relative">
+                      <Link
+                        style={{ textDecoration: 'none' }}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={item.href}
+                        key={index}
                       >
-                        <AspectRatio>
-                          <NextImage src={navigation} alt="" />
-                        </AspectRatio>
-                      </Box>
-                      <Paper shadow="sm" p={theme.spacing?.sm} radius="sm">
-                        <Text fw="bold" ta="center" c={theme.colors?.blue?.[0]}>
-                          {item.name}
-                        </Text>
-                      </Paper>
-                    </Link>
+                        <Box
+                          w={40}
+                          h={40}
+                          pos="absolute"
+                          bottom={30}
+                          left={-20}
+                          style={{
+                            borderRadius: 20,
+                            borderWidth: 1,
+                            borderColor: 'gray',
+                            backgroundColor: 'transparent',
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <IconLocationFilled
+                            stroke={0}
+                            color={theme.colors?.blue?.[1]}
+                            size={25}
+                          />
+                        </Box>
+                        <Paper shadow="sm" p={theme.spacing?.md} radius="md">
+                          <Text c="dark" ta="center">
+                            {item.name}
+                          </Text>
+                        </Paper>
+                      </Link>
+                    </Box>
                   ))}
                 </Group>
               </Center>

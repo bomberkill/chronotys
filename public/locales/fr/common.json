@@ -11,5 +11,10 @@
     "how-work": "Comment ça marche"
   },
   "contact": "Nous Contacter",
-  "usefulLinks": "Liens Utiles"
+  "usefulLinks": "Liens Utiles",
+  "service-links": {
+    "individual": "Livraison pour particuliers",
+    "merchant": "Livraison pour marchands",
+    "storage": "Stockage de marchandises"
+  }
 }

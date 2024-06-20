@@ -11,5 +11,10 @@
     "how-work": "How it works"
   },
   "contact": "Get in touch",
-  "usefulLinks": "Usefull Links"
+  "usefulLinks": "Usefull Links",
+  "service-links": {
+    "individual": "Delivery for individuals",
+    "merchant": "Delivery for merchants",
+    "storage": "Goods storage"
+  }
 }

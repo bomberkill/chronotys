@@ -4,7 +4,15 @@
     background-repeat: no-repeat; */
     overflow: hidden;
     background: linear-gradient(to top left, #F29200, #1a4b6c 60%);
-    /* background-image: url('../public//images//backgroung.jpg'); */
+  }
+
+  .individualBanner {
+    overflow: hidden;
+    background-image: url('../public/images/particulier1.jpg'), linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+    background-blend-mode: overlay;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
 .badge {

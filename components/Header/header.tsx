@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 import Link from 'next/link';
+import { IconCaretDown, IconCaretUp } from '@tabler/icons-react';
 import logo from '../../public/images/chronotys logo.png';
 import { theme } from '@/theme';
 import classes from './header.module.css';
@@ -14,21 +15,60 @@ import classes from './header.module.css';
 const Header = (props: { fixed?: boolean; position?: boolean; color?: boolean }) => {
   const [opened, { toggle, close }] = useDisclosure(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showServices, setShowServices] = useState(false);
   // const [active, setActive] = useState(links[0].link);
   const { t, i18n } = useTranslation('common');
   const links = [
     { link: '/about-us', label: t('header-links.about-us') },
-    { link: '/services', label: t('header-links.services') },
+    { link: '', label: t('header-links.services') },
     { link: '/how-it-works', label: t('header-links.how-work') },
     { link: '/contact-us', label: t('header-links.contact-us') },
   ];
-  const items = links.map((link) => (
-    <Link key={link.label} href={link.link} className={classes.usefullLink}>
-      <Text ta="center" py={rem(5)} px={rem(8)}>
-        {link.label}
-      </Text>
-    </Link>
-  ));
+  const services = [
+    { link: '/individual-delivery', label: t('service-links.individual') },
+    { link: '', label: t('service-links.merchant') },
+    { link: '/how-it-works', label: t('service-links.storage') },
+  ];
+  const items = links.map((link, index) => {
+    if (index === 1) {
+      return (
+        <>
+          <Group
+            style={{ cursor: 'pointer' }}
+            gap={2}
+            align="center"
+            justify="center"
+            onClick={() => setShowServices(!showServices)}
+            key={index}
+            className={classes.usefullLink}
+          >
+            <Text ta="center" py={rem(5)} px={rem(8)}>
+              {link.label}
+            </Text>
+            {!showServices ? <IconCaretDown /> : <IconCaretUp />}
+          </Group>
+          {showServices && (
+            <Stack w="90%" gap={5} align="center" justify="center">
+              {services.map((service, serviceIndex) => (
+                <Link key={serviceIndex} href={service.link} className={classes.usefullLink}>
+                  <Text fz="sm" ta="center" py={rem(5)} px={rem(8)}>
+                    {service.label}
+                  </Text>
+                </Link>
+              ))}
+            </Stack>
+          )}
+        </>
+      );
+    }
+    return (
+      <Link key={index} href={link.link} className={classes.usefullLink}>
+        <Text ta="center" py={rem(5)} px={rem(8)}>
+          {link.label}
+        </Text>
+      </Link>
+    );
+  });
   const [isfrench, setIsFrench] = useState(true);
   const router = useRouter();
   const isSmallScreen = useMediaQuery('(min-width: 576px)');

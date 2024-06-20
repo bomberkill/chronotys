@@ -85,10 +85,10 @@ export const theme = createTheme({
     md: rem(16),
     lg: rem(24),
   },
-  fontFamily: 'Roboto,sans-serif',
+  fontFamily: 'Sawarabi Gothic, sans-serif',
 
   headings: {
-    fontFamily: 'Roboto,sans-serif',
+    fontFamily: 'Sawarabi Gothic, sans-serif',
     fontWeight: '400',
     sizes: {
       h1: {
