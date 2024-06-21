@@ -3,11 +3,11 @@
   "subtitle": "Service rapide et sécurisé à domicile pour vos achats et colis personnels.",
   "key-features": "Caractéristiques clés",
   "fast-delivery": "Livraison rapide",
-  "fast-delivery-text": "Profitez de services de livraison rapide adaptés à vos besoins.",
+  "fast-delivery-text": "Profitez de services de livraison rapide adaptés à vos besoins. Nous nous engageons à vous offrir une expérience de livraison sans tracas, avec des délais de traitement courts et une grande flexibilité.",
   "secure-handling": "Manipulation sécurisée",
-  "secure-handling-text": "Vos colis sont manipulés avec le plus grand soin et en toute sécurité.",
+  "secure-handling-text": "Vos colis sont manipulés avec le plus grand soin et en toute sécurité. Nous employons des mesures rigoureuses pour garantir que vos envois arrivent en parfait état, quel que soit leur contenu.",
   "real-time-tracking": "Suivi en temps réel",
-  "real-time-tracking-text": "Suivez vos colis en temps réel pour une tranquillité d'esprit.",
+  "real-time-tracking-text": "Suivez vos colis en temps réel pour une tranquillité d'esprit. Grâce à notre technologie de suivi avancée, vous pouvez vérifier la localisation de vos envois à tout moment et recevoir des mises à jour instantanées.",
   "how-it-works": "Comment ça marche",
   "place-order": "Passer commande",
   "place-order-text": "Passez facilement votre commande via notre plateforme conviviale.",
@@ -22,6 +22,8 @@
   "reliability-text": "Nous avons un bilan éprouvé de livraisons ponctuelles.",
   "customer-support": "Support client",
   "customer-support-text": "Notre équipe de support est là pour répondre à toutes vos questions.",
-  "get-started": "Commencer",
-  "contact-us": "Contactez-nous"
+  "contact": "Nous Contacter",
+  "contact-text": "Our mission is to provide you with a reliable, fast, and secure delivery service.",
+  "partner": "Be a partner",
+  "order": "Request a delivery"
 }

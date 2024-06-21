@@ -14,26 +14,80 @@ import {
   GridCol,
   Center,
   AspectRatio,
+  Stack,
+  Badge,
+  Transition,
 } from '@mantine/core';
 import Link from 'next/link';
 import NextImage from 'next/image';
 import { useTranslation } from 'next-i18next';
-// import { useRef, useState } from 'react';
+// import { useState } from 'react';
 // import Autoplay from 'embla-carousel-autoplay';
 // import { useMediaQuery } from '@mantine/hooks';
+import { useInViewport, useMediaQuery } from '@mantine/hooks';
+import { useEffect, useState } from 'react';
 import { theme } from '@/theme';
 import '@mantine/carousel/styles.css';
 import classes from './index.module.css';
 import fast from '../public/images/fast.png';
 import secure from '../public/images/secure.png';
 import tracking from '../public/images/tracking.png';
+import delivery from '../public/images/delivery.png';
+import packaging from '../public/images/packaging.png';
+import order from '../public/images/order.png';
+import reliability from '../public/images/reliability.png';
+import customer from '../public/images/customer.png';
+import ease from '../public/images/ease.png';
 // import livraisonImage from '../public/images/livraison.jpeg';
 
 export default function IndividualDelivery() {
   // const autoplay = useRef(Autoplay({ delay: 2000 }));
   // const [isHovered, setIsHovered] = useState(false);
-  // const isLargeScreen = useMediaQuery('(min-width: 790px)');
+  const isSmallScreen = useMediaQuery('(min-width: 576px)');
   const { t } = useTranslation('individual-delivery');
+  // const [mounted, setMounted] = useState(false);
+  const { ref: refForElementOne, inViewport: inViewportForElementOne } = useInViewport();
+  // const { ref: refForElementTwo } = useInViewport();
+  const [inViewportForElementTwo, setInViewportForElementTwo] = useState(false);
+  const { ref: refForElementThree, inViewport: inViewportForElementThree } = useInViewport();
+  const [scrollDirection, setScrollDirection] = useState<'up' | 'down'>('up');
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const isMediumScreen = useMediaQuery('(min-width: 992px)');
+
+  useEffect(() => {
+    const handleMouseMove = (event: any) => {
+      const element = event.target.closest('.features'); // Remplacez '.my-component' par le sélecteur approprié de votre composant
+      if (element) {
+        if (scrollDirection === 'down') {
+          setInViewportForElementTwo(true);
+        }
+      } else if (scrollDirection === 'down') {
+        setInViewportForElementTwo(true);
+      }
+    };
+    document.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY) {
+        setScrollDirection('down');
+      } else {
+        setScrollDirection('up');
+      }
+      setLastScrollY(currentScrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
+
   const features = [
     {
       title: t('fast-delivery'),
@@ -49,6 +103,40 @@ export default function IndividualDelivery() {
       title: t('real-time-tracking'),
       text: t('real-time-tracking-text'),
       image: tracking,
+    },
+  ];
+  const howItWorks = [
+    {
+      title: t('place-order'),
+      text: t('place-order-text'),
+      image: order,
+    },
+    {
+      title: t('package-handling'),
+      text: t('package-handling-text'),
+      image: packaging,
+    },
+    {
+      title: t('delivery'),
+      text: t('delivery-text'),
+      image: delivery,
+    },
+  ];
+  const Benefits = [
+    {
+      title: t('convenience'),
+      text: t('convenience-text'),
+      image: ease,
+    },
+    {
+      title: t('reliability'),
+      text: t('reliability-text'),
+      image: reliability,
+    },
+    {
+      title: t('customer-support'),
+      text: t('customer-support-text'),
+      image: customer,
     },
   ];
   return (
@@ -71,10 +159,10 @@ export default function IndividualDelivery() {
         >
           <Box w={{ base: '100%', md: '90%', lg: '80%' }}>
             <Title c={theme.colors?.orange?.[0]} fz="xl" fw="bold" ta="center">
-              Livraison pour Particuliers
+              {t('title')}
             </Title>
             <Title c="white" fz="lg" ta="center">
-              Service rapide et sécurisé à domicile pour vos achats et colis personnels.
+              {t('subtitle')}
             </Title>
             <Group mt={theme.spacing?.lg} justify="center" gap={15}>
               <Link
@@ -101,55 +189,93 @@ export default function IndividualDelivery() {
       </Box>
       <Container py="xl" size="90%">
         <Center>
-          <Box w="100%">
+          <Box className="features" w="100%">
             <Text fw="bold" fz="lg" ta="center">
-              Key Features
+              {t('key-features')}
             </Text>
             {features.map((item, index) => {
               const isTextFirst = index % 2 === 0;
               return (
                 <Grid my="xs" justify="center" align="center">
-                  {isTextFirst ? (
+                  {!isTextFirst || !isMediumScreen ? (
                     <>
-                      <GridCol key={index} span={{ base: 12, md: 7 }}>
+                      <GridCol
+                        style={{
+                          display: 'flex',
+                          justifyContent: isMediumScreen ? 'flex-end' : 'center',
+                        }}
+                        span={{ base: 12, md: 6 }}
+                      >
+                        <Transition
+                          mounted={inViewportForElementTwo}
+                          keepMounted
+                          transition="slide-right"
+                          duration={1000}
+                          timingFunction="ease"
+                        >
+                          {(styles) => (
+                            <AspectRatio
+                              display="block"
+                              style={styles}
+                              w={isSmallScreen ? 300 : 200}
+                              h={isSmallScreen ? 300 : 200}
+                            >
+                              <NextImage
+                                style={{ width: '100%', height: '100%' }}
+                                src={item.image}
+                                alt=""
+                              />
+                            </AspectRatio>
+                          )}
+                        </Transition>
+                      </GridCol>
+                      <GridCol key={index} span={{ base: 12, md: 6 }}>
                         <Box>
-                          <Text fw="bold" ta="end">
+                          <Text
+                            mb={theme.spacing?.sm}
+                            fw="bold"
+                            ta={{ base: 'center', md: 'start' }}
+                          >
                             {item.title}
                           </Text>
-                          <Text ta="end">{item.text}</Text>
+                          <Text ta={{ base: 'center', md: 'start' }}>{item.text}</Text>
                         </Box>
-                      </GridCol>
-                      <GridCol span={{ base: 12, md: 5 }}>
-                        <AspectRatio w={300} h={300}>
-                          <NextImage
-                            style={{ width: '100%', height: '100%' }}
-                            src={item.image}
-                            alt=""
-                          />
-                        </AspectRatio>
                       </GridCol>
                     </>
                   ) : (
                     <>
-                      <GridCol
-                        style={{ display: 'flex', justifyContent: 'flex-end' }}
-                        span={{ base: 12, md: 6 }}
-                      >
-                        <AspectRatio w={300} h={300}>
-                          <NextImage
-                            style={{ width: '100%', height: '100%' }}
-                            src={item.image}
-                            alt=""
-                          />
-                        </AspectRatio>
-                      </GridCol>
-                      <GridCol key={index} span={{ base: 12, md: 6 }}>
+                      <GridCol key={index} span={{ base: 12, md: 7 }}>
                         <Box>
-                          <Text fw="bold" ta="start">
+                          <Text mb={theme.spacing?.sm} fw="bold" ta={{ base: 'center', md: 'end' }}>
                             {item.title}
                           </Text>
-                          <Text ta="start">{item.text}</Text>
+                          <Text ta={{ base: 'center', md: 'end' }}>{item.text}</Text>
                         </Box>
+                      </GridCol>
+                      <GridCol
+                        span={{ base: 12, md: 5 }}
+                        style={{
+                          display: 'flex',
+                          justifyContent: isMediumScreen ? 'flex-start' : 'center',
+                        }}
+                      >
+                        <Transition
+                          mounted={false}
+                          keepMounted
+                          transition="slide-left"
+                          duration={1000}
+                          timingFunction="ease"
+                        >
+                          {(styles) => (
+                            <AspectRatio display="block" style={styles} w={300} h={300}>
+                              <NextImage
+                                style={{ width: '100%', height: '100%' }}
+                                src={item.image}
+                                alt=""
+                              />
+                            </AspectRatio>
+                          )}
+                        </Transition>
                       </GridCol>
                     </>
                   )}
@@ -158,71 +284,135 @@ export default function IndividualDelivery() {
             })}
           </Box>
         </Center>
-
-        <Box py="xl">
-          <Text fw="bold" fz="lg" ta="center">
-            How It Works
-          </Text>
-          <Grid gutter="lg" my="xl" justify="center" align="center">
-            <GridCol span={4}>
-              <Paper shadow="sm" p="md" withBorder>
-                <Text fw="bold" ta="center">
-                  Place Order
-                </Text>
-                <Text ta="center">Easily place your order through our user-friendly platform.</Text>
-              </Paper>
-            </GridCol>
-            <GridCol span={4}>
-              <Paper shadow="sm" p="md" withBorder>
-                <Text fw="bold" ta="center">
-                  Package Handling
-                </Text>
-                <Text ta="center">We handle your package with care once the order is placed.</Text>
-              </Paper>
-            </GridCol>
-            <GridCol span={4}>
-              <Paper shadow="sm" p="md" withBorder>
-                <Text fw="bold" ta="center">
-                  Delivery
-                </Text>
-                <Text ta="center">Your package is delivered promptly to your doorstep.</Text>
-              </Paper>
-            </GridCol>
-          </Grid>
-        </Box>
-
-        <Box py="xl">
-          <Text fw="bold" fz="lg" ta="center">
-            Benefits
-          </Text>
-          <Grid gutter="lg" my="xl" justify="center" align="center">
-            <GridCol span={4}>
-              <Paper shadow="sm" p="md" withBorder>
-                <Text fw="bold" ta="center">
-                  Convenience
-                </Text>
-                <Text ta="center">Enjoy the ease and time-saving aspects of our service.</Text>
-              </Paper>
-            </GridCol>
-            <GridCol span={4}>
-              <Paper shadow="sm" p="md" withBorder>
-                <Text fw="bold" ta="center">
-                  Reliability
-                </Text>
-                <Text ta="center">We have a proven track record of on-time deliveries.</Text>
-              </Paper>
-            </GridCol>
-            <GridCol span={4}>
-              <Paper shadow="sm" p="md" withBorder>
-                <Text fw="bold" ta="center">
-                  Customer Support
-                </Text>
-                <Text ta="center">Our support team is here to assist you with any queries.</Text>
-              </Paper>
-            </GridCol>
-          </Grid>
-        </Box>
+        <Center pt={theme.spacing?.lg}>
+          <Box>
+            <Text mb={theme.spacing?.lg} fw="bold" fz="lg" ta="center">
+              {t('how-it-works')}
+            </Text>
+            <Grid ref={refForElementOne} align="center" justify="center">
+              {howItWorks.map((item, index) => (
+                <GridCol my={theme.spacing?.md} key={index} span={{ base: 12, md: 4 }}>
+                  <Center>
+                    <Box>
+                      <Stack align="center" justify="center">
+                        <Transition
+                          mounted={inViewportForElementOne}
+                          transition={
+                            index === 0 ? 'slide-right' : index === 1 ? 'slide-down' : 'slide-left'
+                          }
+                          duration={1500}
+                          timingFunction="ease"
+                          keepMounted
+                        >
+                          {(styles) => (
+                            <Box style={styles} pos="relative">
+                              <Badge
+                                color={theme.colors?.blue?.[0]}
+                                h={50}
+                                w={50}
+                                mt={-25}
+                                pos="absolute"
+                                variant="outline"
+                                // bg="white.0"
+                                fw="bold"
+                                fz="md"
+                                left={10}
+                                top={10}
+                                circle
+                                // className={classes.badge}
+                              >
+                                {index + 1}
+                              </Badge>
+                              <AspectRatio
+                                style={{
+                                  border: 'black',
+                                  backgroundColor: 'Background',
+                                  borderWidth: 5,
+                                  borderRadius: isSmallScreen ? 200 : 150,
+                                }}
+                                w={isSmallScreen ? 250 : 200}
+                                h={isSmallScreen ? 250 : 200}
+                              >
+                                <NextImage
+                                  alt=""
+                                  src={item.image}
+                                  style={{ width: '100%', height: '100%' }}
+                                />
+                              </AspectRatio>
+                            </Box>
+                          )}
+                        </Transition>
+                        <Box w={isSmallScreen ? '100%' : '90%'}>
+                          <Text mb={theme.spacing?.sm} fw="bold" ta="center">
+                            {item.title}
+                          </Text>
+                          <Text ta="center">{item.text}</Text>
+                        </Box>
+                      </Stack>
+                    </Box>
+                  </Center>
+                </GridCol>
+              ))}
+            </Grid>
+          </Box>
+        </Center>
       </Container>
+      <Box bg={theme.colors?.blue?.[1]} py="xl">
+        <Text mb={theme.spacing?.lg} c="white.0" fw="bold" fz="lg" ta="center">
+          {t('benefits')}
+        </Text>
+        <Container size="80%">
+          <Grid ref={refForElementThree} justify="center" align="center">
+            {Benefits.map((item, index) => (
+              <GridCol key={index} span={{ base: 12, md: 4 }}>
+                <Transition
+                  mounted={inViewportForElementThree}
+                  transition={index % 2 ? 'slide-up' : 'slide-down'}
+                  duration={1500}
+                  timingFunction="ease"
+                  keepMounted
+                  onExited={() => !inViewportForElementThree}
+                >
+                  {(styles) => (
+                    <Center display="block" style={styles}>
+                      <Paper
+                        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+                        w={{ xs: '100%', sm: '90%', md: '100%', lg: '90%' }}
+                        radius="lg"
+                        shadow="lg"
+                        p={theme.spacing?.lg}
+                      >
+                        <AspectRatio
+                          style={{
+                            border: 'black',
+                            backgroundColor: 'Background',
+                            borderWidth: 5,
+                            borderRadius: isSmallScreen ? 200 : 150,
+                          }}
+                          w={isSmallScreen ? 250 : 200}
+                          h={isSmallScreen ? 250 : 200}
+                        >
+                          <NextImage
+                            style={{ width: '100%', height: '100%' }}
+                            src={item.image}
+                            alt=""
+                          />
+                        </AspectRatio>
+                        <Stack>
+                          <Text mt={theme.spacing?.md} fw="bold" ta="center">
+                            {item.title}
+                          </Text>
+                          <Text ta="center">{item.text}</Text>
+                        </Stack>
+                      </Paper>
+                    </Center>
+                  )}
+                </Transition>
+              </GridCol>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
       <Box py={theme.spacing?.xl} bg={theme.colors?.blue?.[1]}>
         <Text fw="bold" fz="lg" c="white.0" ta="center">
           {t('contact')}

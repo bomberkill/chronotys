@@ -3,11 +3,11 @@
   "subtitle": "Fast and secure home service for your purchases and personal parcels.",
   "key-features": "Key Features",
   "fast-delivery": "Fast Delivery",
-  "fast-delivery-text": "Experience swift delivery services tailored to your needs.",
+  "fast-delivery-text": "Experience swift delivery services tailored to your needs. We are committed to providing you with a hassle-free delivery experience, with short processing times and great flexibility.",
   "secure-handling": "Secure Handling",
-  "secure-handling-text": "Your packages are handled with utmost care and security.",
+  "secure-handling-text": "Your packages are handled with utmost care and security. We employ strict measures to ensure your shipments arrive in perfect condition, no matter their contents.",
   "real-time-tracking": "Real-Time Tracking",
-  "real-time-tracking-text": "Track your packages in real-time for peace of mind.",
+  "real-time-tracking-text": "Track your packages in real-time for peace of mind. With our advanced tracking technology, you can check the location of your shipments at any time and receive instant updates.",
   "how-it-works": "How It Works",
   "place-order": "Place Order",
   "place-order-text": "Easily place your order through our user-friendly platform.",
@@ -22,6 +22,8 @@
   "reliability-text": "We have a proven track record of on-time deliveries.",
   "customer-support": "Customer Support",
   "customer-support-text": "Our support team is here to assist you with any queries.",
-  "get-started": "Get Started",
-  "contact-us": "Contact Us"
+  "contact": "Get in touch",
+  "contact-text": "Our mission is to provide you with a reliable, fast, and secure delivery service.",
+  "partner": "Be a partner",
+  "order": "Request a delivery"
 }
