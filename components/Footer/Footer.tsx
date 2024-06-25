@@ -67,8 +67,8 @@ const Footer = () => {
         icon: <IconPhoneCall color={theme.colors?.blue?.[8]} stroke={1} size={25} />,
       },
       email: {
-        link: 'chrontysexpress@gmail.com',
-        text: 'chrontysexpress@gmail.com',
+        link: 'chronotysexpress@gmail.com',
+        text: 'chronotysexpress@gmail.com',
         icon: <IconBrandMailgun color={theme.colors?.blue?.[8]} stroke={1.5} size={25} />,
       },
     },
