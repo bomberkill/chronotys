@@ -26,8 +26,8 @@ const Header = (props: { fixed?: boolean; position?: boolean; color?: boolean })
   ];
   const services = [
     { link: '/individual-delivery', label: t('service-links.individual') },
-    { link: '', label: t('service-links.merchant') },
-    { link: '/how-it-works', label: t('service-links.storage') },
+    { link: '/merchant-delivery', label: t('service-links.merchant') },
+    { link: '/goods-storage', label: t('service-links.storage') },
   ];
   const items = links.map((link, index) => {
     if (index === 1) {

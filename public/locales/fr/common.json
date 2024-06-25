@@ -17,7 +17,25 @@
     "merchant": "Livraison pour marchands",
     "storage": "Stockage de marchandises"
   },
+  "service": {
+    "header": "Nos Services",
+    "desc": "Notre entreprise offre des services logistiques pour particuliers et marchands : livraison rapide à domicile, expédition fiable aux clients, et stockage sécurisé. Nous simplifions la gestion de vos envois et de votre stockage.",
+    "button": "Voir plus",
+    "title": {
+      "title1": "Livraison pour particuliers",
+      "title2": "Livraison pour marchands",
+      "title3": "Stockage de marchandises"
+    },
+    "text": {
+      "text1": "Service rapide et sécurisé à domicile pour vos achats et colis personnels.",
+      "text2": "Service efficace et fiable pour expédier vos produits aux clients.",
+      "text3": "Solution sécurisée et flexible pour entreposer vos produits dans nos locaux."
+    }
+  },
   "contact-text": "Notre mission est de vous offrir un service de livraison fiable, rapide et sécurisé",
   "partner": "Devenir partenaire",
-  "order": "Demander une livraison"
+  "order": "Demander une livraison",
+  "coverage": "Nos Zones",
+  "area": "de Couverture",
+  "desc": "Nous couvrons 05 regions du cameroun"
 }

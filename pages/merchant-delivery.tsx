@@ -15,7 +15,6 @@ import {
   Center,
   AspectRatio,
   Stack,
-  Badge,
   Transition,
 } from '@mantine/core';
 import Link from 'next/link';
@@ -29,21 +28,21 @@ import { useState } from 'react';
 import { theme } from '@/theme';
 import '@mantine/carousel/styles.css';
 import classes from './index.module.css';
-import fast from '../public/images/fast.png';
-import secure from '../public/images/secure.png';
-import tracking from '../public/images/tracking.png';
-import delivery from '../public/images/delivery.png';
-import packaging from '../public/images/packaging.png';
-import order from '../public/images/order.png';
-import reliability from '../public/images/reliability.png';
-import customer from '../public/images/customer.png';
-import ease from '../public/images/ease.png';
+import flex from '../public/images/flex.png';
+import insurance from '../public/images/insurance.png';
+import performance from '../public/images/performance.png';
+import satisfaction from '../public/images/satisfaction.png';
+import logictics from '../public/images/logictics.png';
+import expansion from '../public/images/expansion.png';
 import ServiceCarousel from '@/components/ServiceCarousel/ServiceCarousel';
 import ContactSection from '@/components/ContactSection/ContactSection';
+import user1 from '../public/images/user1.png';
+import user2 from '../public/images/user2.png';
+import user3 from '../public/images/user3.png';
 
 export default function IndividualDelivery() {
   const isSmallScreen = useMediaQuery('(min-width: 576px)');
-  const { t } = useTranslation('individual-delivery');
+  const { t } = useTranslation('merchant-delivery');
   const { ref: refForElementOne } = useInViewport();
   const { ref: refForElementTwo } = useInViewport();
   const { ref: refForElementThree } = useInViewport();
@@ -54,53 +53,56 @@ export default function IndividualDelivery() {
 
   const features = [
     {
-      title: t('fast-delivery'),
-      text: t('fast-delivery-text'),
-      image: fast,
+      title: t('flexible'),
+      text: t('flexible-text'),
+      image: flex,
     },
     {
-      title: t('secure-handling'),
-      text: t('secure-handling-text'),
-      image: secure,
+      title: t('insurance'),
+      text: t('insurance-text'),
+      image: insurance,
     },
     {
-      title: t('real-time-tracking'),
-      text: t('real-time-tracking-text'),
-      image: tracking,
+      title: t('performance'),
+      text: t('performance-text'),
+      image: performance,
     },
   ];
-  const howItWorks = [
+  const testimonials = [
     {
-      title: t('place-order'),
-      text: t('place-order-text'),
-      image: order,
+      title: t('testimonial1-name'),
+      text: t('testimonial1-text'),
+      role: t('testimonial1-activity'),
+      image: user1,
     },
     {
-      title: t('package-handling'),
-      text: t('package-handling-text'),
-      image: packaging,
+      title: t('testimonial2-name'),
+      text: t('testimonial2-text'),
+      role: t('testimonial2-activity'),
+      image: user2,
     },
     {
-      title: t('delivery'),
-      text: t('delivery-text'),
-      image: delivery,
+      title: t('testimonial3-name'),
+      text: t('testimonial3-text'),
+      role: t('testimonial3-activity'),
+      image: user3,
     },
   ];
   const Benefits = [
     {
-      title: t('convenience'),
-      text: t('convenience-text'),
-      image: ease,
+      title: t('customer-satisfaction'),
+      text: t('customer-satisfaction-text'),
+      image: satisfaction,
     },
     {
-      title: t('reliability'),
-      text: t('reliability-text'),
-      image: reliability,
+      title: t('simplified-logistics'),
+      text: t('simplified-logistics-text'),
+      image: logictics,
     },
     {
-      title: t('customer-support'),
-      text: t('customer-support-text'),
-      image: customer,
+      title: t('market-expansion'),
+      text: t('market-expansion-text'),
+      image: expansion,
     },
   ];
   return (
@@ -112,7 +114,6 @@ export default function IndividualDelivery() {
         className={classes.individualBanner}
         onMouseEnter={() => {
           setInViewportForElementTwo(false);
-          setInViewportForElementOne(false);
         }}
       >
         <Container
@@ -259,96 +260,23 @@ export default function IndividualDelivery() {
             })}
           </Box>
         </Center>
-        <Center
-          onMouseEnter={() => {
-            setInViewportForElementThree(true);
-            setInViewportForElementOne(true);
-          }}
-          pt={theme.spacing?.lg}
-        >
-          <Box>
-            <Text mb={theme.spacing?.lg} fw="bold" fz="lg" ta="center">
-              {t('how-it-works')}
-            </Text>
-            <Grid ref={refForElementOne} align="center" justify="center">
-              {howItWorks.map((item, index) => (
-                <GridCol my={theme.spacing?.md} key={index} span={{ base: 12, md: 4 }}>
-                  <Center>
-                    <Box>
-                      <Stack align="center" justify="center">
-                        <Box mih={isSmallScreen ? 250 : 200}>
-                          <Transition
-                            mounted={inViewportForElementOne}
-                            transition={
-                              index === 0
-                                ? 'slide-right'
-                                : index === 1
-                                  ? 'slide-down'
-                                  : 'slide-left'
-                            }
-                            duration={1500}
-                            timingFunction="ease"
-                            keepMounted
-                          >
-                            {(styles) => (
-                              <Box style={styles} pos="relative">
-                                <Badge
-                                  color={theme.colors?.blue?.[0]}
-                                  h={50}
-                                  w={50}
-                                  mt={-25}
-                                  pos="absolute"
-                                  variant="outline"
-                                  // bg="white.0"
-                                  fw="bold"
-                                  fz="md"
-                                  left={10}
-                                  top={10}
-                                  circle
-                                  // className={classes.badge}
-                                >
-                                  {index + 1}
-                                </Badge>
-                                <AspectRatio
-                                  style={{
-                                    border: 'black',
-                                    backgroundColor: 'Background',
-                                    borderWidth: 5,
-                                    borderRadius: isSmallScreen ? 200 : 150,
-                                  }}
-                                  w={isSmallScreen ? 250 : 200}
-                                  h={isSmallScreen ? 250 : 200}
-                                >
-                                  <NextImage
-                                    alt=""
-                                    src={item.image}
-                                    style={{ width: '100%', height: '100%' }}
-                                  />
-                                </AspectRatio>
-                              </Box>
-                            )}
-                          </Transition>
-                        </Box>
-                        <Box h={isMediumScreen ? 78.3 : '100%'} w={isSmallScreen ? '80%' : '100%'}>
-                          <Text mb={theme.spacing?.sm} fw="bold" ta="center">
-                            {item.title}
-                          </Text>
-                          <Text ta="center">{item.text}</Text>
-                        </Box>
-                      </Stack>
-                    </Box>
-                  </Center>
-                </GridCol>
-              ))}
-            </Grid>
-          </Box>
-        </Center>
       </Container>
-      <Box bg={theme.colors?.blue?.[1]} py="xl">
+      <Box
+        onMouseEnter={() => {
+          setInViewportForElementThree(true);
+        }}
+        bg={theme.colors?.blue?.[1]}
+        py="xl"
+      >
         <Text mb={theme.spacing?.lg} c="white.0" fw="bold" fz="lg" ta="center">
           {t('benefits')}
         </Text>
-        <Container size="80%">
+        <Container
+          onMouseEnter={() => {
+            setInViewportForElementOne(false);
+          }}
+          size="80%"
+        >
           <Grid ref={refForElementThree} justify="center" align="center">
             {Benefits.map((item, index) => (
               <GridCol mih={450.4} key={index} span={{ base: 12, md: 4 }}>
@@ -400,6 +328,118 @@ export default function IndividualDelivery() {
           </Grid>
         </Container>
       </Box>
+      <Container py="xl" size="90%">
+        <Center
+          onMouseEnter={() => {
+            setInViewportForElementOne(true);
+          }}
+          pt={theme.spacing?.lg}
+        >
+          <Box>
+            <Text w="bold" fz="lg" ta="center">
+              {t('testimonials-title')}
+            </Text>
+            <Text ta="center">{t('testimonials-subtitle')}</Text>
+            <Grid
+              mt={theme.spacing?.xl}
+              ref={refForElementOne}
+              gutter={{ base: 'xl', sm: 'sm', md: 'xl' }}
+              align="center"
+              justify="center"
+            >
+              {testimonials.map((item, index) => (
+                <GridCol mih={312.7} my={theme.spacing?.md} key={index} span={{ base: 12, sm: 4 }}>
+                  <Center>
+                    <Transition
+                      mounted={inViewportForElementOne}
+                      transition="slide-right"
+                      duration={1500}
+                      timingFunction="ease"
+                      keepMounted
+                    >
+                      {(styles) => (
+                        <Box style={styles}>
+                          <Box style={{ display: 'flex', justifyContent: 'center' }}>
+                            <AspectRatio
+                              style={{
+                                border: 'black',
+                                backgroundColor: 'Background',
+                                borderRadius: 50,
+                              }}
+                              mt={-50}
+                              pos="absolute"
+                              w={100}
+                              h={100}
+                            >
+                              <NextImage
+                                style={{ width: '100%', height: '100%', borderRadius: 50 }}
+                                src={item.image}
+                                alt=""
+                              />
+                            </AspectRatio>
+                            {/* <Badge
+                              color={theme.colors?.orange?.[0]}
+                              h={50}
+                              w={50}
+                              mt={-25}
+                              pos="absolute"
+                              variant="outline"
+                              // bg="white.0"
+                              fw="bold"
+                              fz="md"
+                              circle
+                              className={classes.badge}
+                            >
+                              {index + 1}
+                            </Badge> */}
+                          </Box>
+                          <Center>
+                            <Paper
+                              className={classes.paper}
+                              withBorder
+                              pt={theme.spacing?.xl}
+                              style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                              }}
+                              shadow="sm"
+                              p={theme.spacing?.md}
+                              // h={200}
+                              // w={261}
+                            >
+                              <Box w="100%">
+                                <Box
+                                  mih={142}
+                                  style={{
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
+                                  }}
+                                >
+                                  <Text fs="italic" fz="sm" ta="center">
+                                    {item.text}
+                                  </Text>
+                                </Box>
+                                <Text fz="md" fw="bold" pt={theme.spacing?.md} ta="center">
+                                  {item.title}
+                                </Text>
+                                <Text fz="xs" fw="bold" pt={0} ta="center">
+                                  {item.role}
+                                </Text>
+                              </Box>
+                            </Paper>
+                          </Center>
+                        </Box>
+                      )}
+                    </Transition>
+                  </Center>
+                </GridCol>
+              ))}
+            </Grid>
+          </Box>
+        </Center>
+      </Container>
       <ServiceCarousel />
       <ContactSection />
     </>
@@ -409,7 +449,7 @@ export default function IndividualDelivery() {
 export async function getStaticProps({ locale = 'fr' }: GetStaticPropsContext) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'individual-delivery'])),
+      ...(await serverSideTranslations(locale, ['common', 'merchant-delivery'])),
     },
   };
 }
