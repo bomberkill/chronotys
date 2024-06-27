@@ -2,12 +2,18 @@
 import { useTranslation } from 'next-i18next';
 import * as Yup from 'yup';
 import { useForm, yupResolver } from '@mantine/form';
-import { Button, Group, Paper, TextInput, Textarea, Text } from '@mantine/core';
+import { Button, Group, Paper, TextInput, Textarea, Text, Dialog } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
+import { useState } from 'react';
+import emailJS from '@emailjs/browser';
 import { theme } from '@/theme';
 import classes from './contact.module.css';
 
 const ContactForm = () => {
   const { t } = useTranslation('contact-us');
+  const [loading, setIsLoading] = useState(false);
+  const [opened, { toggle, close }] = useDisclosure(false);
+  const [dialogState, setDialogState] = useState({ message: '', color: '' });
 
   const partnerInitialsValues = {
     email: '',
@@ -25,6 +31,60 @@ const ContactForm = () => {
     validate: yupResolver(partnerValidation),
   });
 
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    try {
+      // Send email using EmailJS
+      const templateParams = {
+        subject: ` Mr,Mme ${partnerForm.values.name} souhaite entrer en contact avec votre entreprise`,
+        email: `email du client: ${partnerForm.values.email}`,
+        message: `message du client: ${partnerForm.values.message}`,
+        name: partnerForm.values.name,
+      };
+      console.log('debut envoie mail');
+      emailJS
+        .send('service_2sismhh', 'template_j0p9p7g', templateParams, {
+          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+        })
+        .then((response) => {
+          console.log('SUCCESS!', response.status, response.text);
+
+          // Reset form or show success message
+          partnerForm.reset();
+
+          // setSuccess(true);
+          setDialogState({
+            color: `${theme.colors?.green?.[0]}`,
+            message: 'Message successfully sent',
+          });
+          toggle();
+          setTimeout(() => {
+            close();
+            // setSuccess(false);
+          }, 1500);
+        })
+        .catch((error) => {
+          console.error('FAILED...', error);
+          // Show error message
+          setDialogState({ color: `${theme.colors?.yellow?.[0]}`, message: 'Message not send' });
+          toggle();
+          setTimeout(() => {
+            close();
+          }, 1500);
+        });
+      console.log('fin envoie mail');
+    } catch (error) {
+      console.log('erreur survenue', error);
+      setDialogState({ color: `${theme.colors?.red?.[3]}`, message: 'Something went wrong' });
+      toggle();
+      setTimeout(() => {
+        close();
+      }, 1500);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <Paper
       maw={500}
@@ -34,10 +94,22 @@ const ContactForm = () => {
       m={theme.spacing?.sm}
       radius="md"
     >
+      <Dialog
+        style={{ alignItems: 'center', justifyContent: 'center' }}
+        opened={opened}
+        onClose={close}
+        withCloseButton
+        size="lg"
+        radius="md"
+      >
+        <Text c={dialogState.color} size="md" mb="xs" fw="bold">
+          {dialogState.message}
+        </Text>
+      </Dialog>
       <Text fw="bold" fz="md" ta="center">
         {t('title')}
       </Text>
-      <form onSubmit={partnerForm.onSubmit(() => console.log(test))}>
+      <form onSubmit={partnerForm.onSubmit(handleSubmit)}>
         <TextInput
           label={t('form.labels.name')}
           placeholder={t('form.labels.name')}
@@ -77,7 +149,7 @@ const ContactForm = () => {
             fw="bold"
             ff={theme.fontFamily}
             size="sm"
-            // loading={loading}
+            loading={loading}
           >
             {t('form.labels.submit')}
           </Button>

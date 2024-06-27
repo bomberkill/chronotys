@@ -11,12 +11,14 @@ import {
   IconLocation,
   IconPhoneCall,
 } from '@tabler/icons-react';
+import { useMediaQuery } from '@mantine/hooks';
 import logo from '../../public/images/chronotys logo.png';
 import { theme } from '@/theme';
 import classes from './footer.module.css';
 
 const Footer = () => {
   const { t } = useTranslation('common');
+  const isSmallScreen = useMediaQuery('(min-width: 576px)');
   const data = {
     copyright: 'Copyright (c) 2024 . Chronotys',
     logo: {
@@ -39,9 +41,12 @@ const Footer = () => {
     usefulLinks: {
       title: t('usefulLinks'),
       links: [
+        { link: '/', label: t('header-links.home') },
+        { link: '/individual-delivery', label: t('header-links.individual-delivery') },
+        { link: '/merchant-delivery', label: t('header-links.merchant-delivery') },
+        { link: '/goods-storage', label: t('header-links.goods-storage') },
+        { link: '/contact-us', label: t('header-links.contact-us') },
         { link: '/about-us', label: t('header-links.about-us') },
-        { link: '/services', label: t('header-links.services') },
-        { link: '/process', label: t('header-links.how-work') },
       ],
     },
     contact: {
@@ -77,87 +82,93 @@ const Footer = () => {
     <Box w="100%" py="10vh" bg="dark.9">
       <Center>
         <footer style={{ width: '90%' }}>
-          <Grid w="100%" justify="center" grow align="flex-start">
-            <Grid.Col span={{ base: 12, md: 4 }}>
-              <Center>
-                <Box>
-                  <NextImage
-                    style={{ objectFit: 'contain', height: 75, width: 150 }}
-                    src={data.logo.icon}
-                    alt="logo"
-                  />
-                  {/* <AspectRatio w={150} mx="auto">
+          <Grid align="flex-start">
+            <Grid.Col
+              style={{ display: 'flex', justifyContent: isSmallScreen ? 'center' : 'flex-start' }}
+              span={{ base: 12, md: 4 }}
+            >
+              <Box>
+                <NextImage
+                  style={{ objectFit: 'contain', height: 75, width: 150 }}
+                  src={data.logo.icon}
+                  alt="logo"
+                />
+                {/* <AspectRatio w={150} mx="auto">
                     </AspectRatio> */}
-                  <Group align="center" w="100%">
-                    {data.logo.socialMedia.map((item, index) => (
-                      <Link className={classes.socialMedia} href={item.link} key={index}>
-                        {item.icon}
-                      </Link>
-                    ))}
-                  </Group>
-                </Box>
-              </Center>
-            </Grid.Col>
-            <Grid.Col span={{ base: 12, xs: 6, md: 4 }}>
-              <Center>
-                <Box>
-                  <Text fz="md" mb={theme.spacing?.md} c={theme.colors?.blue?.[9]} fw="bold">
-                    {data.usefulLinks.title}
-                  </Text>
-                  <Stack>
-                    {data.usefulLinks.links.map((item, index) => (
-                      <Link className={classes.usefullLink} href={item.link} key={index}>
-                        <Text fz="sm">{item.label}</Text>
-                      </Link>
-                    ))}
-                  </Stack>
-                </Box>
-              </Center>
-            </Grid.Col>
-            <Grid.Col span={{ base: 12, xs: 6, md: 4 }}>
-              <Center>
-                <Box>
-                  <Text fz="md" mb={theme.spacing?.md} c={theme.colors?.blue?.[9]} fw="bold">
-                    {data.contact.title}
-                  </Text>
-                  <Stack>
-                    <Group>
-                      <IconLocation color={theme.colors?.blue?.[8]} stroke={1} size={25} />
-                      <Stack gap={0}>
-                        {data.contact.locations.map((item, index) => (
-                          <Box key={index}>
-                            <Text ml={-10} c={theme.colors?.orange?.[0]} fz="md">
-                              {item.text1}
-                            </Text>
-                            <Text ml={-10} c={theme.colors?.blue?.[8]} fz="sm">
-                              {item.text2}
-                            </Text>
-                          </Box>
-                        ))}
-                      </Stack>
-                    </Group>
-                    <Group>
-                      {data.contact.phone.icon}
-                      <Stack gap={0}>
-                        <Text ml={-10} c={theme.colors?.blue?.[8]} fz="sm">
-                          {data.contact.phone.phone1}
-                        </Text>
-                        <Text ml={-10} c={theme.colors?.blue?.[8]} fz="sm">
-                          {data.contact.phone.phone2}
-                        </Text>
-                      </Stack>
-                    </Group>
-                    <Link className={classes.usefullLink} href={data.contact.email.link}>
-                      <Group>
-                        {data.contact.email.icon}
-                        <Text ml={-10} fz="sm">
-                          {data.contact.email.text}
-                        </Text>
-                      </Group>
+                <Group align="center" w="100%">
+                  {data.logo.socialMedia.map((item, index) => (
+                    <Link className={classes.socialMedia} href={item.link} key={index}>
+                      {item.icon}
                     </Link>
-                  </Stack>
-                </Box>
-              </Center>
+                  ))}
+                </Group>
+              </Box>
+              <Center></Center>
+            </Grid.Col>
+            <Grid.Col
+              style={{ display: 'flex', justifyContent: isSmallScreen ? 'center' : 'flex-start' }}
+              span={{ base: 12, xs: 6, md: 4 }}
+            >
+              <Box>
+                <Text fz="md" mb={theme.spacing?.md} c={theme.colors?.blue?.[9]} fw="bold">
+                  {data.usefulLinks.title}
+                </Text>
+                <Stack>
+                  {data.usefulLinks.links.map((item, index) => (
+                    <Link className={classes.usefullLink} href={item.link} key={index}>
+                      <Text fz="sm">{item.label}</Text>
+                    </Link>
+                  ))}
+                </Stack>
+              </Box>
+              <Center></Center>
+            </Grid.Col>
+            <Grid.Col
+              style={{ display: 'flex', justifyContent: isSmallScreen ? 'center' : 'flex-start' }}
+              span={{ base: 12, xs: 6, md: 4 }}
+            >
+              <Box>
+                <Text fz="md" mb={theme.spacing?.md} c={theme.colors?.blue?.[9]} fw="bold">
+                  {data.contact.title}
+                </Text>
+                <Stack>
+                  <Group>
+                    <IconLocation color={theme.colors?.blue?.[8]} stroke={1} size={25} />
+                    <Stack gap={0}>
+                      {data.contact.locations.map((item, index) => (
+                        <Box key={index}>
+                          <Text ml={-10} c={theme.colors?.orange?.[0]} fz="md">
+                            {item.text1}
+                          </Text>
+                          <Text ml={-10} c={theme.colors?.blue?.[8]} fz="sm">
+                            {item.text2}
+                          </Text>
+                        </Box>
+                      ))}
+                    </Stack>
+                  </Group>
+                  <Group>
+                    {data.contact.phone.icon}
+                    <Stack gap={0}>
+                      <Text ml={-10} c={theme.colors?.blue?.[8]} fz="sm">
+                        {data.contact.phone.phone1}
+                      </Text>
+                      <Text ml={-10} c={theme.colors?.blue?.[8]} fz="sm">
+                        {data.contact.phone.phone2}
+                      </Text>
+                    </Stack>
+                  </Group>
+                  <Link className={classes.usefullLink} href={data.contact.email.link}>
+                    <Group>
+                      {data.contact.email.icon}
+                      <Text ml={-10} fz="sm">
+                        {data.contact.email.text}
+                      </Text>
+                    </Group>
+                  </Link>
+                </Stack>
+              </Box>
+              <Center></Center>
             </Grid.Col>
           </Grid>
           <Text fz="md" c={theme.colors?.blue?.[9]} pt={theme.spacing?.xl} ta="center">

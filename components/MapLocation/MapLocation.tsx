@@ -1,6 +1,5 @@
-import { AspectRatio, Box, Center, Container, Group, Paper, Text } from '@mantine/core';
+import { AspectRatio, Box, Center, Container, Grid, GridCol, Group, Text } from '@mantine/core';
 import NextImage from 'next/image';
-import { IconLocationFilled } from '@tabler/icons-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useMediaQuery } from '@mantine/hooks';
@@ -17,6 +16,8 @@ import garoua from '../../public/images/garoua.png';
 import garoua2 from '../../public/images/garoua2.png';
 import maroua from '../../public/images/maroua.png';
 import maroua2 from '../../public/images/maroua2.png';
+import location from '../../public/images/location.png';
+import classes from './mapLocation.module.css';
 
 export default function MapLocation() {
   const [dlaHovered, setDlaHovered] = useState(false);
@@ -24,7 +25,8 @@ export default function MapLocation() {
   const [marHovered, setMarHovered] = useState(false);
   const [garHovered, setGarHovered] = useState(false);
   const [ngaHovered, setNgaHovered] = useState(false);
-  const isLargeScreen = useMediaQuery('(min-width: 790px)');
+  const isLargeScreen = useMediaQuery('(min-width: 992px)');
+  const isSmallScreen = useMediaQuery('(min-width: 576px)');
   const { t } = useTranslation('common');
   const locations = [
     { name: 'Douala', href: 'https://www.google.com/maps?q=51.5074,-0.1278' },
@@ -37,7 +39,7 @@ export default function MapLocation() {
     },
   ];
   return (
-    <Container style={{ overflow: 'hidden' }} size="80%">
+    <Container style={{ overflow: 'hidden' }} size={isLargeScreen ? '80%' : '90%'}>
       <Center>
         {isLargeScreen ? (
           <Box pos="relative">
@@ -177,10 +179,10 @@ export default function MapLocation() {
         ) : (
           <Box py={theme.spacing?.lg}>
             <Group gap={5} justify="center">
-              <Text fw="bold" fz="lg" c={theme.colors?.orange?.[0]}>
+              <Text ta="center" fw="bold" fz="lg" c={theme.colors?.orange?.[0]}>
                 {t('coverage')}
               </Text>
-              <Text fw="bold" fz="lg" c={theme.colors?.blue?.[0]}>
+              <Text ta="center" fw="bold" fz="lg" c={theme.colors?.blue?.[0]}>
                 {t('area')}
               </Text>
             </Group>
@@ -188,43 +190,43 @@ export default function MapLocation() {
               {t('desc')}
             </Text>
             <Center>
-              <Group gap="lg" justify="center">
+              <Grid align="center" justify="center">
                 {locations.map((item, index) => (
-                  <Box w={130} mx={theme.spacing?.xs} pos="relative">
-                    <Link
-                      style={{ textDecoration: 'none' }}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={item.href}
-                      key={index}
-                    >
-                      <Box
-                        w={40}
-                        h={40}
-                        pos="absolute"
-                        bottom={30}
-                        left={-20}
-                        style={{
-                          borderRadius: 20,
-                          borderWidth: 1,
-                          borderColor: 'gray',
-                          backgroundColor: 'transparent',
-                          display: 'flex',
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                        }}
+                  <GridCol span={index === locations.length - 1 ? 12 : 6}>
+                    <Center>
+                      <Link
+                        style={{ textDecoration: 'none' }}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href={item.href}
+                        key={index}
                       >
-                        <IconLocationFilled stroke={0} color={theme.colors?.blue?.[1]} size={25} />
-                      </Box>
-                      <Paper shadow="sm" p={theme.spacing?.md} radius="md">
-                        <Text c="dark" ta="center">
-                          {item.name}
-                        </Text>
-                      </Paper>
-                    </Link>
-                  </Box>
+                        <Group
+                          gap={0}
+                          className={classes.location}
+                          p={theme.spacing?.sm}
+                          style={{
+                            transition: 'border 0.3s ease',
+                            borderRadius: '15px',
+                            background: !isSmallScreen ? 'background' : 'none',
+                          }}
+                        >
+                          <AspectRatio w={40} h={40}>
+                            <NextImage
+                              style={{ width: '100%', height: '100%' }}
+                              alt=""
+                              src={location}
+                            />
+                          </AspectRatio>
+                          <Text c="dark" ta="center">
+                            {item.name}
+                          </Text>
+                        </Group>
+                      </Link>
+                    </Center>
+                  </GridCol>
                 ))}
-              </Group>
+              </Grid>
             </Center>
           </Box>
         )}

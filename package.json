@@ -20,6 +20,7 @@
     "storybook:build": "storybook build"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.3.3",
     "@mantine/carousel": "^7.10.2",
     "@mantine/core": "7.10.0",
     "@mantine/form": "^7.10.1",
