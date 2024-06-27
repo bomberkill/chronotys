@@ -19,9 +19,10 @@ const Header = (props: { fixed?: boolean; position?: boolean; color?: boolean })
   // const [active, setActive] = useState(links[0].link);
   const { t, i18n } = useTranslation('common');
   const links = [
-    { link: '/about-us', label: t('header-links.about-us') },
+    { link: '/', label: t('header-links.home') },
     { link: '', label: t('header-links.services') },
     { link: '/how-it-works', label: t('header-links.how-work') },
+    { link: '/about-us', label: t('header-links.about-us') },
     { link: '/contact-us', label: t('header-links.contact-us') },
   ];
   const services = [
@@ -99,7 +100,10 @@ const Header = (props: { fixed?: boolean; position?: boolean; color?: boolean })
   }, []);
 
   return (
-    <Box pos={scrolled || props.position ? 'fixed' : 'relative'} style={{ zIndex: 100 }}>
+    <Box
+      pos={!isSmallScreen || scrolled || props.position ? 'fixed' : 'relative'}
+      style={{ zIndex: 100 }}
+    >
       <header
         style={{
           boxShadow: scrolled ? '2px 2px 2px 0 rgba(0, 0, 0, 0.3)' : '',

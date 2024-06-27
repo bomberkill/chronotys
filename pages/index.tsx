@@ -21,7 +21,8 @@ import Link from 'next/link';
 import NextImage from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { Carousel, CarouselSlide } from '@mantine/carousel';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useIntersection, useMediaQuery } from '@mantine/hooks';
 import Autoplay from 'embla-carousel-autoplay';
 import { theme } from '@/theme';
 import '@mantine/carousel/styles.css';
@@ -39,7 +40,16 @@ import ContactSection from '@/components/ContactSection/ContactSection';
 
 export default function HomePage() {
   const autoplay = useRef(Autoplay({ delay: 2000 }));
-  // const isLargeScreen = useMediaQuery('(min-width: 790px)');
+  const isSmallScreen = useMediaQuery('(min-width: 576px)');
+  // const containerRef = useRef<HTMLDivElement>(null);
+  const { ref: boxRef, entry: boxEntry } = useIntersection({
+    root: null,
+    threshold: 0.6,
+  });
+  const { ref: transitionRef, entry: transitionEntry } = useIntersection({
+    root: null,
+    threshold: isSmallScreen ? 0.15 : 0.3,
+  });
   const [refProcessMounted, setRefProcessMounted] = useState(false);
   const { t } = useTranslation('home');
   const processStep = [
@@ -78,8 +88,16 @@ export default function HomePage() {
     projectioncompany,
     bao,
   ];
+  useEffect(() => {
+    if (boxEntry?.isIntersecting) {
+      setRefProcessMounted(false);
+    }
+    if (transitionEntry?.isIntersecting) {
+      setRefProcessMounted(true);
+    }
+  }, [boxEntry, transitionEntry]);
   return (
-    <>
+    <Box>
       <Header color={false} />
       <Box
         pt="15vh"
@@ -87,7 +105,8 @@ export default function HomePage() {
         w="100%"
         className={classes.banner}
         pb={theme.spacing?.lg}
-        onMouseEnter={() => setRefProcessMounted(false)}
+        ref={boxRef}
+        // onMouseEnter={() => setRefProcessMounted(false)}
       >
         <Container
           h="100%"
@@ -159,7 +178,7 @@ export default function HomePage() {
         </Container>
       </Box>
       <ServiceCarousel />
-      <Container onMouseEnter={() => setRefProcessMounted(true)} py={theme.spacing?.xl} size="90%">
+      <Container ref={transitionRef} py={theme.spacing?.xl} size="90%">
         <Center>
           <Box w={{ base: '100%', md: '90%' }}>
             <Text fw="bold" fz="lg" ta="center">
@@ -268,7 +287,7 @@ export default function HomePage() {
       </Container>
       <ContactSection />
       <MapLocation />
-    </>
+    </Box>
   );
 }
 export async function getStaticProps({ locale = 'fr' }: GetStaticPropsContext) {

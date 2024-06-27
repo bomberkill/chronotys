@@ -15,6 +15,15 @@
     background-repeat: no-repeat;
   }
 
+  .MerchantBanner {
+    overflow: hidden;
+    background-image: url('../public/images/merchant.jpg'), linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+    background-blend-mode: overlay;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
 .badge {
   color: #F29200;
   background: white;
