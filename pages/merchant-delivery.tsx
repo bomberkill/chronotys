@@ -140,7 +140,7 @@ export default function IndividualDelivery() {
         pt="15vh"
         h={{ base: '80vh', sm: '80vh', lg: '100vh' }}
         w="100%"
-        className={classes.MerchantBanner}
+        className={classes.merchantBanner}
         ref={transitionOne}
       >
         <Container

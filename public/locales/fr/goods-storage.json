@@ -1,9 +1,9 @@
 {
   "title": "Solutions de Stockage",
-  "subtitle": "Gardez vos biens en sécurité et accessibles avec nos services de stockage fiables et sécurisés. Que vous ayez besoin d'un stockage à court ou à long terme, nous proposons des solutions flexibles pour répondre à vos besoins.",
+  "subtitle": "Gardez vos biens en sécurité et accessibles avec nos services de stockage.",
   "key-features": "Caractéristiques Clés de Notre Service de Stockage",
   "flexible-storage-options": "Options de Stockage Flexibles",
-  "flexible-storage-options-text": "Choisissez parmi divers plans de stockage pour répondre à vos besoins personnels ou professionnels, que ce soit pour quelques jours ou plusieurs mois.",
+  "flexible-storage-options-text": "Choisissez parmi divers plans de stockage pour répondre à vos besoins personnels ou professionnels.",
   "advanced-security": "Sécurité Avancée",
   "advanced-security-text": "Vos biens sont protégés par une surveillance 24/7, des systèmes de sécurité de pointe et un accès restreint.",
   "climate-control": "Contrôle Climatique",
@@ -11,7 +11,7 @@
   "easy-access": "Accès Facile",
   "easy-access-text": "Accédez à vos biens à tout moment avec notre système d'accès pratique et sécurisé.",
   "insurance-coverage": "Couverture d'Assurance",
-  "insurance-coverage-text": "Bénéficiez de plans d'assurance optionnels pour garantir la sécurité et la protection de vos biens stockés.",
+  "insurance-coverage-text": "Bénéficiez de plans d'assurance optionnels pour garantir la protection de vos biens.",
   "benefits": "Avantages de l'Utilisation du Stockage Chronotys",
   "cost-effective": "Rentable",
   "cost-effective-text": "Économisez de l'argent avec nos tarifs compétitifs et nos plans de paiement flexibles.",
@@ -31,5 +31,7 @@
   "step4": "Accéder",
   "step4-text": "Récupérez vos articles à tout moment.",
   "contact": "Contactez-Nous",
-  "contact-text": "Prêt à stocker vos biens en toute confiance ? Contactez-nous dès aujourd'hui pour en savoir plus sur nos solutions de stockage et comment nous pouvons vous aider."
+  "contact-text": "Prêt à stocker vos biens en toute confiance ? Contactez-nous dès aujourd'hui pour en savoir plus sur nos solutions de stockage et comment nous pouvons vous aider.",
+  "partner": "Devenir partenaire",
+  "order": "Demander une livraison"
 }

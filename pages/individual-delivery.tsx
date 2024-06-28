@@ -99,7 +99,7 @@ export default function IndividualDelivery() {
       image: delivery,
     },
   ];
-  const Benefits = [
+  const benefits = [
     {
       title: t('convenience'),
       text: t('convenience-text'),
@@ -366,11 +366,11 @@ export default function IndividualDelivery() {
       </Container>
       <Box ref={transitionFour} bg={theme.colors?.blue?.[1]} py="xl">
         <Text mb={theme.spacing?.lg} c="white.0" fw="bold" fz="lg" ta="center">
-          {t('benefits')}
+          {t('b')}
         </Text>
         <Container size="80%">
           <Grid justify="center" align="center">
-            {Benefits.map((item, index) => (
+            {benefits.map((item, index) => (
               <GridCol mih={450.4} key={index} span={{ base: 12, md: 4 }}>
                 <Transition
                   mounted={inViewportForElementThree}
