@@ -1,9 +1,9 @@
 {
   "title": "Storage Solutions",
-  "subtitle": "Keep your belongings safe and accessible with our reliable and secure storage services. Whether you need short-term or long-term storage, we provide flexible solutions to fit your needs.",
+  "subtitle": "Keep your belongings safe and accessible with our storage services.",
   "key-features": "Key Features of Our Storage Service",
   "flexible-storage-options": "Flexible Storage Options",
-  "flexible-storage-options-text": "Choose from various storage plans to fit your personal or business needs, whether it's for a few days or several months.",
+  "flexible-storage-options-text": "Choose from various storage plans to fit your personal or business needs.",
   "advanced-security": "Advanced Security",
   "advanced-security-text": "Your belongings are protected with 24/7 surveillance, cutting-edge security systems, and restricted access.",
   "climate-control": "Climate Control",
@@ -11,7 +11,7 @@
   "easy-access": "Easy Access",
   "easy-access-text": "Access your belongings anytime with our convenient and secure access system.",
   "insurance-coverage": "Insurance Coverage",
-  "insurance-coverage-text": "Benefit from optional insurance plans to ensure the safety and security of your stored items.",
+  "insurance-coverage-text": "Benefit from optional insurance plans to ensure the safety of your items.",
   "benefits": "Benefits of Using Chronotys Storage",
   "cost-effective": "Cost-Effective",
   "cost-effective-text": "Save money with our competitive pricing and flexible payment plans.",
@@ -31,5 +31,7 @@
   "step4": "Access",
   "step4-text": "Retrieve your items whenever needed.",
   "contact": "Contact Us",
-  "contact-text": "Ready to store your belongings with confidence? Contact us today to learn more about our storage solutions and how we can help you."
+  "contact-text": "Ready to store your belongings with confidence? Contact us today to learn more about our storage solutions and how we can help you.",
+  "partner": "Be a partner",
+  "order": "Request a delivery"
 }
