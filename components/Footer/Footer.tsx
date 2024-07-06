@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { Box, Center, Container, Grid, Group, Stack, Text } from '@mantine/core';
+import { AspectRatio, Box, Center, Container, Grid, Group, Stack, Text } from '@mantine/core';
 import { useTranslation } from 'next-i18next';
 import NextImage from 'next/image';
 import Link from 'next/link';
@@ -20,7 +20,7 @@ const Footer = () => {
   const { t } = useTranslation('common');
   const isSmallScreen = useMediaQuery('(min-width: 576px)');
   const data = {
-    copyright: 'Copyright (c) 2024 . Chronotys',
+    copyright: 'Copyright (c) 2024 . Chronotys Express Sarl',
     logo: {
       icon: logo,
       socialMedia: [
@@ -59,16 +59,16 @@ const Footer = () => {
       locations: [
         {
           text1: 'Douala',
-          text2: 'Bonamoussadi',
+          text2: 'Feu rouge Bessengue Douala, Cameroon +237',
         },
-        {
-          text1: 'Yaoundé',
-          text2: 'Biyemassi',
-        },
+        // {
+        //   text1: 'Yaoundé',
+        //   text2: 'Biyemassi',
+        // },
       ],
       phone: {
-        phone1: '6 93 817 886',
-        phone2: '6 98 232 355',
+        phone1: '6 96 923 169',
+        phone2: '6 50 604 020',
         icon: <IconPhoneCall color={theme.colors?.blue?.[8]} stroke={1} size={25} />,
       },
       email: {
@@ -79,7 +79,7 @@ const Footer = () => {
     },
   };
   return (
-    <Box w="100%" py="10vh" bg="dark.9">
+    <Box w="100%" py={isSmallScreen ? '10vh' : 'lg'} bg="dark.9">
       <Center>
         <footer style={{ width: '90%' }}>
           <Grid align="flex-start">
@@ -88,16 +88,22 @@ const Footer = () => {
               span={{ base: 12, md: 4 }}
             >
               <Box>
-                <NextImage
-                  style={{ objectFit: 'contain', height: 75, width: 150 }}
-                  src={data.logo.icon}
-                  alt="logo"
-                />
+                <AspectRatio h={isSmallScreen ? 75 : 60} w={isSmallScreen ? 150 : 130}>
+                  <NextImage
+                    style={{ objectFit: 'contain', height: '100%', width: '100%' }}
+                    src={data.logo.icon}
+                    alt="logo"
+                  />
+                </AspectRatio>
                 {/* <AspectRatio w={150} mx="auto">
                     </AspectRatio> */}
-                <Group align="center" w="100%">
+                <Group mt={!isSmallScreen ? theme.spacing?.sm : 0} align="center" w="100%">
                   {data.logo.socialMedia.map((item, index) => (
-                    <Link className={classes.socialMedia} href={item.link} key={index}>
+                    <Link
+                      className={isSmallScreen ? classes.socialMedia : ''}
+                      href={item.link}
+                      key={index}
+                    >
                       {item.icon}
                     </Link>
                   ))}

@@ -56,7 +56,7 @@ export default function GoodsStorage() {
   });
   const { ref: transitionFour, entry: transitionFourEntry } = useIntersection({
     root: null,
-    threshold: isSmallScreen ? 0.15 : 0.5,
+    threshold: isSmallScreen ? 0.15 : 0.3,
   });
   const [inViewportForElementOne, setInViewportForElementOne] = useState(false);
   const [inViewportForElementTwo, setInViewportForElementTwo] = useState(false);
@@ -275,7 +275,7 @@ export default function GoodsStorage() {
           {benefits.map((item, index) => {
             const isTextFirst = index % 2 === 0;
             return (
-              <Grid my="xs" justify="center" align="center">
+              <Grid my={theme.spacing?.lg} justify="center" align="center">
                 {!isTextFirst || !isMediumScreen ? (
                   <>
                     <GridCol
@@ -367,7 +367,7 @@ export default function GoodsStorage() {
           <Text fw="bold" fz="lg" ta="center">
             {t('how-it-works')}
           </Text>
-          <Grid justify="center" align="center">
+          <Grid my={theme.spacing?.lg} justify="center" align="center">
             {howItWorks.map((item, index) => (
               <GridCol mih={450.4} key={index} span={{ base: 12, sm: 6 }}>
                 <Transition

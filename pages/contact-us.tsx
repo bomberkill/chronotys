@@ -8,11 +8,13 @@ import ContactForm from '@/components/ContactForm/ContactForm';
 import design from '../public/images/MAP.png';
 import MapLocation from '@/components/MapLocation/MapLocation';
 import { theme } from '@/theme';
+import Header from '@/components/Header/Header';
 
 export default function ContactUs() {
   const isLargeScreen = useMediaQuery('(min-width: 768px)');
   return (
     <>
+      <Header color />
       <Container pb={theme.spacing?.xl} style={{ overflow: 'hidden' }} pt="15vh" size="90%">
         <Center>
           <Grid align="center" justify="center">
