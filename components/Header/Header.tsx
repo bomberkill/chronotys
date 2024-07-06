@@ -1,6 +1,16 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable max-len */
-import { Container, Group, Burger, rem, Drawer, Text, Box, Stack } from '@mantine/core';
+import {
+  Container,
+  Group,
+  Burger,
+  rem,
+  Drawer,
+  Text,
+  Box,
+  Stack,
+  AspectRatio,
+} from '@mantine/core';
 import NextImage from 'next/image';
 import { useDisclosure, useMediaQuery } from '@mantine/hooks';
 import { useEffect, useState } from 'react';
@@ -21,7 +31,7 @@ const Header = (props: { fixed?: boolean; position?: boolean; color?: boolean })
   const links = [
     { link: '/', label: t('header-links.home') },
     { link: '', label: t('header-links.services') },
-    { link: '/how-it-works', label: t('header-links.how-work') },
+    // { link: '/how-it-works', label: t('header-links.how-work') },
     { link: '/about-us', label: t('header-links.about-us') },
     { link: '/contact-us', label: t('header-links.contact-us') },
   ];
@@ -101,13 +111,13 @@ const Header = (props: { fixed?: boolean; position?: boolean; color?: boolean })
 
   return (
     <Box
-      pos={!isSmallScreen || scrolled || props.position ? 'fixed' : 'relative'}
+      pos={!isSmallScreen ? 'relative' : scrolled || props.position ? 'fixed' : 'relative'}
       style={{ zIndex: 100 }}
     >
       <header
         style={{
           boxShadow: scrolled ? '2px 2px 2px 0 rgba(0, 0, 0, 0.3)' : '',
-          height: '15vh',
+          height: isSmallScreen ? '15vh' : '10vh',
           backgroundColor: !props.color && !scrolled ? 'transparent' : 'white',
           width: '100%',
           position: 'fixed',
@@ -116,16 +126,18 @@ const Header = (props: { fixed?: boolean; position?: boolean; color?: boolean })
       >
         <Container
           py="1%"
-          h="15vh"
+          h={isSmallScreen ? '15vh' : '10vh'}
           size="90%"
           style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
         >
           <Link href="/">
-            <NextImage
-              style={{ objectFit: 'contain', height: 75, width: 150 }}
-              src={logo}
-              alt="logo"
-            />
+            <AspectRatio h={isSmallScreen ? 75 : 60} w={isSmallScreen ? 150 : 130}>
+              <NextImage
+                style={{ objectFit: 'contain', height: '100%', width: '100%' }}
+                src={logo}
+                alt="logo"
+              />
+            </AspectRatio>
           </Link>
           <Group align="center" justify="flex-end">
             {isSmallScreen && (

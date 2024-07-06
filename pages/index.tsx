@@ -100,7 +100,7 @@ export default function HomePage() {
     <Box>
       <Header color={false} />
       <Box
-        pt="15vh"
+        pt={isSmallScreen ? '15vh' : '10vh'}
         h={{ base: '80vh', sm: '80vh', lg: '100vh' }}
         w="100%"
         className={classes.banner}

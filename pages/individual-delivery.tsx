@@ -261,7 +261,7 @@ export default function IndividualDelivery() {
                         }}
                       >
                         <Transition
-                          mounted={inViewportForElementTwo}
+                          mounted={inViewportForElementOne}
                           keepMounted
                           transition="slide-left"
                           duration={1000}
@@ -366,7 +366,7 @@ export default function IndividualDelivery() {
       </Container>
       <Box ref={transitionFour} bg={theme.colors?.blue?.[1]} py="xl">
         <Text mb={theme.spacing?.lg} c="white.0" fw="bold" fz="lg" ta="center">
-          {t('b')}
+          {t('benefits')}
         </Text>
         <Container size="80%">
           <Grid justify="center" align="center">
