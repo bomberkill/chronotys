@@ -47,6 +47,8 @@ const Footer = () => {
         { link: '/goods-storage', label: t('header-links.goods-storage') },
         { link: '/contact-us', label: t('header-links.contact-us') },
         { link: '/about-us', label: t('header-links.about-us') },
+        { link: '/privacy', label: t('header-links.privacy') },
+        { link: '/terms', label: t('header-links.terms') },
       ],
     },
     contact: {
